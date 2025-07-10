@@ -341,6 +341,18 @@ class ELearningQuizSystem {
                 'select_left' => __('Select left item', 'elearning-quiz'),
                 'select_right' => __('Select right item', 'elearning-quiz'),
                 'matches_with' => __('matches with', 'elearning-quiz'),
+                'left_column' => __('Left Column', 'elearning-quiz'),
+                'right_column' => __('Right Column', 'elearning-quiz'),
+                'left_item' => __('Left item', 'elearning-quiz'),
+                'right_item' => __('Right item', 'elearning-quiz'),
+                'options' => __('Options', 'elearning-quiz'),
+                'text_with_blanks' => __('Text with Blanks', 'elearning-quiz'),
+                'blank_instruction' => __('Use {{blank}} to mark where blanks should appear.', 'elearning-quiz'),
+                'word_bank' => __('Word Bank', 'elearning-quiz'),
+                'correct_answer' => __('Correct Answer', 'elearning-quiz'),
+                'true_option' => __('True', 'elearning-quiz'),
+                'false_option' => __('False', 'elearning-quiz'),
+                'correct_matches' => __('Correct Matches', 'elearning-quiz'),
             ]
         ]);
     }

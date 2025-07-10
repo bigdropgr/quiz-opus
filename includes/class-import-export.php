@@ -271,7 +271,14 @@ class ELearning_Import_Export {
             $answer = strtolower(trim($data[$correct_index]));
             
             if (in_array($answer, ['true', 't', '1', 'yes'])) {
+                $question['correct_answer'] = 'true';
+            } elseif (in_array($answer, ['false', 'f', '0', 'no'])) {
+                $question['correct_answer'] = 'false';
+            } else {
                 $question['correct_answer'] = 'true'; // Default
+            }
+        } else {
+            $question['correct_answer'] = 'true'; // Default
         }
         
         return $question;
@@ -663,11 +670,4 @@ class ELearning_Import_Export {
         </script>
         <?php
     }
-} 'true';
-            } elseif (in_array($answer, ['false', 'f', '0', 'no'])) {
-                $question['correct_answer'] = 'false';
-            } else {
-                $question['correct_answer'] = 'true'; // Default
-            }
-        } else {
-            $question['correct_answer'] =
+}

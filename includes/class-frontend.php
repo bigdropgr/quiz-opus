@@ -1,8 +1,9 @@
 <?php
 /**
- * Frontend Class - FIXED VERSION
+ * Frontend Class - FIXED VERSION 2.0
  * 
  * Fixed the True/False HTML structure to prevent grid layout issues
+ * Fixed the quiz prompt display after marking sections complete
  */
 
 if (!defined('ABSPATH')) {
@@ -71,7 +72,7 @@ class ELearning_Frontend {
     }
     
     /**
-     * Add lesson content to single lesson pages
+     * Add lesson content to single lesson pages - FIXED VERSION 2.0
      */
     public function addLessonContent($content) {
         if (!is_singular('elearning_lesson') || !in_the_loop() || !is_main_query()) {
@@ -174,11 +175,12 @@ class ELearning_Frontend {
         }
         $content .= '</div>';
         
-        // Quiz link
-        if ($associated_quiz && $completed_sections >= count($sections)) {
+        // Quiz link - FIXED: Show initially if all sections completed, otherwise hide
+        $quiz_display_style = $completed_sections >= count($sections) ? 'block' : 'none';
+        if ($associated_quiz) {
             $quiz = get_post($associated_quiz);
             if ($quiz && $quiz->post_status === 'publish') {
-                $content .= '<div class="lesson-quiz-prompt">';
+                $content .= '<div class="lesson-quiz-prompt" style="display: ' . $quiz_display_style . ';" data-quiz-id="' . esc_attr($associated_quiz) . '">';
                 $content .= '<h3>' . __('Ready for the Quiz?', 'elearning-quiz') . '</h3>';
                 $content .= '<p>' . __('You have completed all sections. Test your knowledge with the quiz!', 'elearning-quiz') . '</p>';
                 $content .= '<a href="' . get_permalink($associated_quiz) . '" class="button quiz-button">' . __('Take Quiz', 'elearning-quiz') . '</a>';
@@ -188,7 +190,7 @@ class ELearning_Frontend {
         
         $content .= '</div>';
         
-        // Add JavaScript for section tracking
+        // Add JavaScript for section tracking - FIXED VERSION
         $content .= $this->getLessonTrackingScript();
         
         return $content;
@@ -529,7 +531,7 @@ class ELearning_Frontend {
     }
     
     /**
-     * Get lesson tracking script
+     * Get lesson tracking script - FIXED VERSION 3.0
      */
     private function getLessonTrackingScript() {
         ob_start();
@@ -540,27 +542,34 @@ class ELearning_Frontend {
             let sectionTimers = {};
             let sectionScrollTracking = {};
             
-            $('.section-content').each(function() {
-                const $section = $(this);
-                const sectionIndex = $section.data('section-index');
-                
-                // Initialize tracking
-                sectionTimers[sectionIndex] = Date.now();
-                sectionScrollTracking[sectionIndex] = false;
-                
-                // Track scroll completion
-                $section.on('scroll', function() {
-                    const scrollPercentage = ($section.scrollTop() + $section.height()) / $section[0].scrollHeight * 100;
+            // Initialize tracking for existing sections
+            function initializeSectionTracking() {
+                $('.section-content').each(function() {
+                    const $section = $(this);
+                    const sectionIndex = $section.data('section-index');
                     
-                    if (scrollPercentage >= 90 && !sectionScrollTracking[sectionIndex]) {
-                        sectionScrollTracking[sectionIndex] = true;
-                        console.log('Section ' + sectionIndex + ' scroll completed');
+                    if (!sectionTimers.hasOwnProperty(sectionIndex)) {
+                        sectionTimers[sectionIndex] = Date.now();
+                        sectionScrollTracking[sectionIndex] = false;
+                        
+                        // Track scroll completion
+                        $section.off('scroll').on('scroll', function() {
+                            const scrollPercentage = ($section.scrollTop() + $section.height()) / $section[0].scrollHeight * 100;
+                            
+                            if (scrollPercentage >= 90 && !sectionScrollTracking[sectionIndex]) {
+                                sectionScrollTracking[sectionIndex] = true;
+                                console.log('Section ' + sectionIndex + ' scroll completed');
+                            }
+                        });
                     }
                 });
-            });
+            }
             
-            // Mark section as complete
-            $('.mark-complete-btn').on('click', function() {
+            // Initialize on page load
+            initializeSectionTracking();
+            
+            // Main handler function for mark complete button
+            function handleMarkComplete() {
                 const $button = $(this);
                 const sectionIndex = $button.data('section-index');
                 const lessonId = $('.elearning-lesson-container').data('lesson-id');
@@ -587,21 +596,77 @@ class ELearning_Frontend {
                             // Update UI
                             const $section = $button.closest('.lesson-section');
                             $section.addClass('completed');
-                            $section.find('.section-title').prepend('<span class="completion-icon">✓</span> ');
+                            
+                            // Add completion icon if not already present
+                            if (!$section.find('.section-title .completion-icon').length) {
+                                $section.find('.section-title').prepend('<span class="completion-icon">✓</span> ');
+                            }
+                            
                             $button.parent().remove();
+                            
+                            // Update progress bar
+                            updateProgressBar();
+                            
+                            // Check if all sections are now completed
+                            const totalSections = $('.lesson-section').length;
+                            const completedSections = $('.lesson-section.completed').length;
+                            
+                            // Show quiz prompt immediately if all sections completed
+                            if (completedSections === totalSections) {
+                                $('.lesson-quiz-prompt').slideDown();
+                            }
                             
                             // Unlock next section
                             const $nextSection = $section.next('.lesson-section');
                             if ($nextSection.length && $nextSection.hasClass('locked')) {
                                 $nextSection.removeClass('locked');
                                 $nextSection.find('.lock-icon').remove();
-                                $nextSection.find('.section-locked-message').remove();
-                                // Load content for next section if needed
-                                location.reload(); // Simple reload for now
+                                
+                                // Replace locked message with actual content
+                                const nextSectionIndex = parseInt($nextSection.data('section-index'));
+                                
+                                // AJAX call to get section content
+                                $.ajax({
+                                    url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                                    type: 'POST',
+                                    data: {
+                                        action: 'elearning_get_section_content',
+                                        lesson_id: lessonId,
+                                        section_index: nextSectionIndex,
+                                        nonce: '<?php echo wp_create_nonce('elearning_quiz_nonce'); ?>'
+                                    },
+                                    success: function(contentResponse) {
+                                        if (contentResponse.success) {
+                                            $nextSection.find('.section-locked-message').remove();
+                                            
+                                            const sectionContent = '<div class="section-content" data-section-index="' + nextSectionIndex + '">' +
+                                                contentResponse.data.content +
+                                                '<div class="section-actions">' +
+                                                '<button type="button" class="mark-complete-btn" data-section-index="' + nextSectionIndex + '">' +
+                                                '<?php echo esc_js(__('Mark as Complete', 'elearning-quiz')); ?>' +
+                                                '</button>' +
+                                                '</div>' +
+                                                '</div>';
+                                            
+                                            $nextSection.append(sectionContent);
+                                            
+                                            // Initialize tracking for new section
+                                            sectionTimers[nextSectionIndex] = Date.now();
+                                            sectionScrollTracking[nextSectionIndex] = false;
+                                            
+                                            // Re-initialize section tracking for new content
+                                            initializeSectionTracking();
+                                            
+                                            // FIXED: Use event delegation to ensure the new button works
+                                            // No need to rebind - delegation handles it
+                                        }
+                                    },
+                                    error: function() {
+                                        // Fallback: reload page if AJAX fails
+                                        location.reload();
+                                    }
+                                });
                             }
-                            
-                            // Update progress bar
-                            updateProgressBar();
                         } else {
                             alert(response.data || '<?php echo esc_js(__('Error updating progress', 'elearning-quiz')); ?>');
                             $button.prop('disabled', false).text('<?php echo esc_js(__('Mark as Complete', 'elearning-quiz')); ?>');
@@ -612,7 +677,10 @@ class ELearning_Frontend {
                         $button.prop('disabled', false).text('<?php echo esc_js(__('Mark as Complete', 'elearning-quiz')); ?>');
                     }
                 });
-            });
+            }
+            
+            // FIXED: Use event delegation to handle dynamically added buttons
+            $(document).on('click', '.mark-complete-btn', handleMarkComplete);
             
             function updateProgressBar() {
                 const totalSections = $('.lesson-section').length;
@@ -625,16 +693,10 @@ class ELearning_Frontend {
                         .replace('%d', completedSections)
                         .replace('%d', totalSections)
                 );
-                
-                // Show quiz prompt if all sections completed
-                if (completedSections === totalSections) {
-                    $('.lesson-quiz-prompt').slideDown();
-                }
             }
         });
         </script>
         <?php
         return ob_get_clean();
     }
-}
 }

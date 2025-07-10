@@ -1,8 +1,9 @@
 <?php
 /**
- * Custom Post Types Class
+ * Custom Post Types Class - FIXED VERSION
  * 
  * Handles registration of custom post types and taxonomies
+ * FIXES: Matching and Fill-in-the-blanks saving issues
  */
 
 if (!defined('ABSPATH')) {
@@ -394,8 +395,7 @@ class ELearning_Post_Types {
     }
     
     /**
-     * Render quiz settings meta box - UPDATED VERSION
-     * Replace the existing renderQuizSettingsMetaBox method in class-post-types.php
+     * Render quiz settings meta box
      */
     public function renderQuizSettingsMetaBox($post): void {
         wp_nonce_field('quiz_settings_nonce', 'quiz_settings_nonce');
@@ -477,202 +477,6 @@ class ELearning_Post_Types {
             </tr>
         </table>
         <?php
-    }
-
-    /**
-     * Save quiz meta data - UPDATED VERSION
-     * Replace the existing saveQuizMeta method in class-post-types.php
-     */
-    private function saveQuizMeta($post_id): void {
-        // Save quiz settings
-        if (isset($_POST['quiz_settings_nonce']) && wp_verify_nonce($_POST['quiz_settings_nonce'], 'quiz_settings_nonce')) {
-            $passing_score = isset($_POST['passing_score']) ? intval($_POST['passing_score']) : 70;
-            $min_questions = isset($_POST['min_questions_to_show']) ? intval($_POST['min_questions_to_show']) : 5;
-            $show_results = isset($_POST['show_results_immediately']) ? sanitize_text_field($_POST['show_results_immediately']) : 'yes';
-            $time_limit = isset($_POST['time_limit']) ? intval($_POST['time_limit']) : 0;
-            $randomize_questions = isset($_POST['randomize_questions']) ? sanitize_text_field($_POST['randomize_questions']) : 'no';
-            $randomize_answers = isset($_POST['randomize_answers']) ? sanitize_text_field($_POST['randomize_answers']) : 'no';
-            
-            // Validate values
-            $passing_score = max(0, min(100, $passing_score));
-            $min_questions = max(1, $min_questions);
-            $time_limit = max(0, $time_limit);
-            
-            update_post_meta($post_id, '_passing_score', $passing_score);
-            update_post_meta($post_id, '_min_questions_to_show', $min_questions);
-            update_post_meta($post_id, '_show_results_immediately', $show_results);
-            update_post_meta($post_id, '_time_limit', $time_limit);
-            update_post_meta($post_id, '_randomize_questions', $randomize_questions);
-            update_post_meta($post_id, '_randomize_answers', $randomize_answers);
-        }
-        
-        // Save associated lesson
-        if (isset($_POST['quiz_lesson_nonce']) && wp_verify_nonce($_POST['quiz_lesson_nonce'], 'quiz_lesson_nonce')) {
-            $old_lesson_id = get_post_meta($post_id, '_associated_lesson', true);
-            $new_lesson_id = isset($_POST['associated_lesson']) ? intval($_POST['associated_lesson']) : '';
-            
-            // Update quiz → lesson association
-            update_post_meta($post_id, '_associated_lesson', $new_lesson_id);
-            
-            // Remove old lesson → quiz association
-            if ($old_lesson_id && $old_lesson_id != $new_lesson_id) {
-                delete_post_meta($old_lesson_id, '_associated_quiz');
-            }
-            
-            // Add new lesson → quiz association
-            if ($new_lesson_id) {
-                update_post_meta($new_lesson_id, '_associated_quiz', $post_id);
-            }
-        }
-        
-        // Save quiz questions with validation
-        if (isset($_POST['quiz_questions_nonce']) && wp_verify_nonce($_POST['quiz_questions_nonce'], 'quiz_questions_nonce')) {
-            if (isset($_POST['quiz_questions']) && is_array($_POST['quiz_questions'])) {
-                $questions = [];
-                
-                foreach ($_POST['quiz_questions'] as $question_data) {
-                    // Skip empty questions
-                    if (empty($question_data['question']) || empty($question_data['type'])) {
-                        continue;
-                    }
-                    
-                    // Validate question type
-                    $allowed_types = ['multiple_choice', 'true_false', 'fill_blanks', 'matching'];
-                    $question_type = sanitize_text_field($question_data['type']);
-                    if (!in_array($question_type, $allowed_types)) {
-                        $question_type = 'multiple_choice';
-                    }
-                    
-                    $question = [
-                        'type' => $question_type,
-                        'question' => sanitize_textarea_field($question_data['question'])
-                    ];
-                    
-                    // Sanitize question-specific data based on type
-                    switch ($question['type']) {
-                        case 'multiple_choice':
-                            $options = [];
-                            $correct_answers = [];
-                            
-                            if (isset($question_data['options']) && is_array($question_data['options'])) {
-                                foreach ($question_data['options'] as $index => $option) {
-                                    if (!empty(trim($option))) {
-                                        $options[$index] = sanitize_text_field($option);
-                                    }
-                                }
-                            }
-                            
-                            if (isset($question_data['correct_answers']) && is_array($question_data['correct_answers'])) {
-                                foreach ($question_data['correct_answers'] as $answer) {
-                                    if (isset($options[$answer])) {
-                                        $correct_answers[] = intval($answer);
-                                    }
-                                }
-                            }
-                            
-                            // Validate we have at least 2 options and 1 correct answer
-                            if (count($options) >= 2 && count($correct_answers) > 0) {
-                                $question['options'] = $options;
-                                $question['correct_answers'] = $correct_answers;
-                            } else {
-                                continue; // Skip invalid question
-                            }
-                            break;
-                            
-                        case 'fill_blanks':
-                            $text_with_blanks = sanitize_textarea_field($question_data['text_with_blanks'] ?? '');
-                            $word_bank = [];
-                            
-                            // Validate blanks exist
-                            if (strpos($text_with_blanks, '{{blank}}') === false) {
-                                continue; // Skip if no blanks
-                            }
-                            
-                            if (isset($question_data['word_bank']) && is_array($question_data['word_bank'])) {
-                                foreach ($question_data['word_bank'] as $word) {
-                                    if (!empty(trim($word))) {
-                                        $word_bank[] = sanitize_text_field($word);
-                                    }
-                                }
-                            }
-                            
-                            // Validate word bank has enough words
-                            $blank_count = substr_count($text_with_blanks, '{{blank}}');
-                            if (count($word_bank) >= $blank_count) {
-                                $question['text_with_blanks'] = $text_with_blanks;
-                                $question['word_bank'] = $word_bank;
-                            } else {
-                                continue; // Skip invalid question
-                            }
-                            break;
-                            
-                        case 'true_false':
-                            $question['correct_answer'] = sanitize_text_field($question_data['correct_answer'] ?? 'true');
-                            if (!in_array($question['correct_answer'], ['true', 'false'])) {
-                                $question['correct_answer'] = 'true';
-                            }
-                            break;
-                            
-                        case 'matching':
-                            $left_column = [];
-                            $right_column = [];
-                            $matches = [];
-                            
-                            // Validate left column
-                            if (isset($question_data['left_column']) && is_array($question_data['left_column'])) {
-                                foreach ($question_data['left_column'] as $index => $item) {
-                                    if (!empty(trim($item))) {
-                                        $left_column[$index] = sanitize_text_field($item);
-                                    }
-                                }
-                            }
-                            
-                            // Validate right column
-                            if (isset($question_data['right_column']) && is_array($question_data['right_column'])) {
-                                foreach ($question_data['right_column'] as $index => $item) {
-                                    if (!empty(trim($item))) {
-                                        $right_column[$index] = sanitize_text_field($item);
-                                    }
-                                }
-                            }
-                            
-                            // Validate matches
-                            if (isset($question_data['matches']) && is_array($question_data['matches'])) {
-                                foreach ($question_data['matches'] as $match) {
-                                    if (isset($match['left']) && isset($match['right'])) {
-                                        $left_idx = intval($match['left']);
-                                        $right_idx = intval($match['right']);
-                                        
-                                        if (isset($left_column[$left_idx]) && isset($right_column[$right_idx])) {
-                                            $matches[] = [
-                                                'left' => $left_idx,
-                                                'right' => $right_idx
-                                            ];
-                                        }
-                                    }
-                                }
-                            }
-                            
-                            // Validate we have items and matches
-                            if (count($left_column) >= 2 && count($right_column) >= 2 && count($matches) > 0) {
-                                $question['left_column'] = $left_column;
-                                $question['right_column'] = $right_column;
-                                $question['matches'] = $matches;
-                            } else {
-                                continue; // Skip invalid question
-                            }
-                            break;
-                    }
-                    
-                    $questions[] = $question;
-                }
-                
-                // Only save if we have valid questions
-                if (!empty($questions)) {
-                    update_post_meta($post_id, '_quiz_questions', $questions);
-                }
-            }
-        }
     }
     
     /**
@@ -1046,7 +850,7 @@ class ELearning_Post_Types {
     }
     
     /**
-     * Save quiz meta data
+     * Save quiz meta data - FIXED VERSION
      */
     private function saveQuizMeta($post_id): void {
         // Save quiz settings
@@ -1054,10 +858,21 @@ class ELearning_Post_Types {
             $passing_score = isset($_POST['passing_score']) ? intval($_POST['passing_score']) : 70;
             $min_questions = isset($_POST['min_questions_to_show']) ? intval($_POST['min_questions_to_show']) : 5;
             $show_results = isset($_POST['show_results_immediately']) ? sanitize_text_field($_POST['show_results_immediately']) : 'yes';
+            $time_limit = isset($_POST['time_limit']) ? intval($_POST['time_limit']) : 0;
+            $randomize_questions = isset($_POST['randomize_questions']) ? sanitize_text_field($_POST['randomize_questions']) : 'no';
+            $randomize_answers = isset($_POST['randomize_answers']) ? sanitize_text_field($_POST['randomize_answers']) : 'no';
+            
+            // Validate values
+            $passing_score = max(0, min(100, $passing_score));
+            $min_questions = max(1, $min_questions);
+            $time_limit = max(0, $time_limit);
             
             update_post_meta($post_id, '_passing_score', $passing_score);
             update_post_meta($post_id, '_min_questions_to_show', $min_questions);
             update_post_meta($post_id, '_show_results_immediately', $show_results);
+            update_post_meta($post_id, '_time_limit', $time_limit);
+            update_post_meta($post_id, '_randomize_questions', $randomize_questions);
+            update_post_meta($post_id, '_randomize_answers', $randomize_answers);
         }
         
         // Save associated lesson
@@ -1079,47 +894,183 @@ class ELearning_Post_Types {
             }
         }
         
-        // Save quiz questions
+        // Save quiz questions with validation - FIXED VERSION
         if (isset($_POST['quiz_questions_nonce']) && wp_verify_nonce($_POST['quiz_questions_nonce'], 'quiz_questions_nonce')) {
             if (isset($_POST['quiz_questions']) && is_array($_POST['quiz_questions'])) {
                 $questions = [];
                 
                 foreach ($_POST['quiz_questions'] as $question_data) {
+                    // Skip empty questions
+                    if (empty($question_data['question']) || empty($question_data['type'])) {
+                        continue;
+                    }
+                    
+                    // Validate question type
+                    $allowed_types = ['multiple_choice', 'true_false', 'fill_blanks', 'matching'];
+                    $question_type = sanitize_text_field($question_data['type']);
+                    if (!in_array($question_type, $allowed_types)) {
+                        $question_type = 'multiple_choice';
+                    }
+                    
                     $question = [
-                        'type' => sanitize_text_field($question_data['type']),
+                        'type' => $question_type,
                         'question' => sanitize_textarea_field($question_data['question'])
                     ];
                     
                     // Sanitize question-specific data based on type
                     switch ($question['type']) {
                         case 'multiple_choice':
-                            $question['options'] = array_map('sanitize_text_field', $question_data['options'] ?? []);
-                            $question['correct_answers'] = array_map('intval', $question_data['correct_answers'] ?? []);
+                            $options = [];
+                            $correct_answers = [];
+                            
+                            if (isset($question_data['options']) && is_array($question_data['options'])) {
+                                // Re-index the array to ensure sequential keys
+                                $options_raw = array_values($question_data['options']);
+                                foreach ($options_raw as $new_index => $option) {
+                                    if (!empty(trim($option))) {
+                                        $options[$new_index] = sanitize_text_field($option);
+                                    }
+                                }
+                            }
+                            
+                            if (isset($question_data['correct_answers']) && is_array($question_data['correct_answers'])) {
+                                foreach ($question_data['correct_answers'] as $answer) {
+                                    // Check if this index exists in the re-indexed options
+                                    $answer_int = intval($answer);
+                                    // Find the new index for this answer
+                                    if (isset($question_data['options'][$answer_int])) {
+                                        $option_value = $question_data['options'][$answer_int];
+                                        // Find this value in our re-indexed options
+                                        $new_index = array_search(sanitize_text_field($option_value), $options);
+                                        if ($new_index !== false) {
+                                            $correct_answers[] = $new_index;
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            // Validate we have at least 2 options and 1 correct answer
+                            if (count($options) >= 2 && count($correct_answers) > 0) {
+                                $question['options'] = $options;
+                                $question['correct_answers'] = $correct_answers;
+                            } else {
+                                continue; // Skip invalid question
+                            }
                             break;
                             
                         case 'fill_blanks':
-                            $question['text_with_blanks'] = sanitize_textarea_field($question_data['text_with_blanks'] ?? '');
-                            $question['word_bank'] = array_map('sanitize_text_field', $question_data['word_bank'] ?? []);
+                            $text_with_blanks = sanitize_textarea_field($question_data['text_with_blanks'] ?? '');
+                            $word_bank = [];
+                            
+                            // Validate blanks exist
+                            if (strpos($text_with_blanks, '{{blank}}') === false) {
+                                continue; // Skip if no blanks
+                            }
+                            
+                            if (isset($question_data['word_bank']) && is_array($question_data['word_bank'])) {
+                                // Re-index the array to ensure sequential keys
+                                $word_bank_raw = array_values($question_data['word_bank']);
+                                foreach ($word_bank_raw as $word) {
+                                    if (!empty(trim($word))) {
+                                        $word_bank[] = sanitize_text_field($word);
+                                    }
+                                }
+                            }
+                            
+                            // Validate word bank has enough words
+                            $blank_count = substr_count($text_with_blanks, '{{blank}}');
+                            if (count($word_bank) >= $blank_count) {
+                                $question['text_with_blanks'] = $text_with_blanks;
+                                $question['word_bank'] = $word_bank;
+                            } else {
+                                continue; // Skip invalid question
+                            }
                             break;
                             
                         case 'true_false':
                             $question['correct_answer'] = sanitize_text_field($question_data['correct_answer'] ?? 'true');
+                            if (!in_array($question['correct_answer'], ['true', 'false'])) {
+                                $question['correct_answer'] = 'true';
+                            }
                             break;
                             
                         case 'matching':
-                            $question['left_column'] = array_map('sanitize_text_field', $question_data['left_column'] ?? []);
-                            $question['right_column'] = array_map('sanitize_text_field', $question_data['right_column'] ?? []);
-                            $question['matches'] = [];
+                            $left_column = [];
+                            $right_column = [];
+                            $matches = [];
                             
-                            if (isset($question_data['matches']) && is_array($question_data['matches'])) {
-                                foreach ($question_data['matches'] as $match) {
-                                    if (isset($match['left']) && isset($match['right']) && $match['left'] !== '' && $match['right'] !== '') {
-                                        $question['matches'][] = [
-                                            'left' => intval($match['left']),
-                                            'right' => intval($match['right'])
-                                        ];
+                            // Validate left column - re-index array
+                            if (isset($question_data['left_column']) && is_array($question_data['left_column'])) {
+                                $left_items = array_values($question_data['left_column']);
+                                foreach ($left_items as $new_index => $item) {
+                                    if (!empty(trim($item))) {
+                                        $left_column[$new_index] = sanitize_text_field($item);
                                     }
                                 }
+                            }
+                            
+                            // Validate right column - re-index array
+                            if (isset($question_data['right_column']) && is_array($question_data['right_column'])) {
+                                $right_items = array_values($question_data['right_column']);
+                                foreach ($right_items as $new_index => $item) {
+                                    if (!empty(trim($item))) {
+                                        $right_column[$new_index] = sanitize_text_field($item);
+                                    }
+                                }
+                            }
+                            
+                            // Create index mapping for old to new indices
+                            $left_index_map = [];
+                            $right_index_map = [];
+                            
+                            if (isset($question_data['left_column']) && is_array($question_data['left_column'])) {
+                                $old_left_indices = array_keys($question_data['left_column']);
+                                foreach ($old_left_indices as $i => $old_index) {
+                                    if (!empty(trim($question_data['left_column'][$old_index]))) {
+                                        $left_index_map[$old_index] = count($left_index_map);
+                                    }
+                                }
+                            }
+                            
+                            if (isset($question_data['right_column']) && is_array($question_data['right_column'])) {
+                                $old_right_indices = array_keys($question_data['right_column']);
+                                foreach ($old_right_indices as $i => $old_index) {
+                                    if (!empty(trim($question_data['right_column'][$old_index]))) {
+                                        $right_index_map[$old_index] = count($right_index_map);
+                                    }
+                                }
+                            }
+                            
+                            // Validate matches with new indices
+                            if (isset($question_data['matches']) && is_array($question_data['matches'])) {
+                                foreach ($question_data['matches'] as $match) {
+                                    if (isset($match['left']) && isset($match['right'])) {
+                                        $old_left_idx = $match['left'];
+                                        $old_right_idx = $match['right'];
+                                        
+                                        // Map old indices to new indices
+                                        if (isset($left_index_map[$old_left_idx]) && isset($right_index_map[$old_right_idx])) {
+                                            $new_left_idx = $left_index_map[$old_left_idx];
+                                            $new_right_idx = $right_index_map[$old_right_idx];
+                                            
+                                            if (isset($left_column[$new_left_idx]) && isset($right_column[$new_right_idx])) {
+                                                $matches[] = [
+                                                    'left' => $new_left_idx,
+                                                    'right' => $new_right_idx
+                                                ];
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            // Validate we have items and matches
+                            if (count($left_column) >= 2 && count($right_column) >= 2 && count($matches) > 0) {
+                                $question['left_column'] = $left_column;
+                                $question['right_column'] = $right_column;
+                                $question['matches'] = $matches;
+                            } else {
+                                continue; // Skip invalid question
                             }
                             break;
                     }
@@ -1127,7 +1078,10 @@ class ELearning_Post_Types {
                     $questions[] = $question;
                 }
                 
-                update_post_meta($post_id, '_quiz_questions', $questions);
+                // Only save if we have valid questions
+                if (!empty($questions)) {
+                    update_post_meta($post_id, '_quiz_questions', $questions);
+                }
             }
         }
     }

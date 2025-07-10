@@ -1,5 +1,5 @@
-/* E-Learning Quiz System - Frontend JavaScript */
-/* Updated with timer functionality, better error handling, and performance optimizations */
+/* E-Learning Quiz System - Frontend JavaScript - FIXED VERSION */
+/* Fixed: Multiple choice unanswered questions false positive */
 
 jQuery(document).ready(function($) {
     'use strict';
@@ -267,13 +267,41 @@ jQuery(document).ready(function($) {
     }
     
     function handleSubmitQuiz() {
-        // Check if all questions answered
+        // Save current answer first
+        saveCurrentAnswer();
+        
+        // FIXED: Check if all questions answered properly
         const unanswered = [];
-        for (let i = 0; i < currentQuiz.totalQuestions; i++) {
-            if (!currentQuiz.answers.hasOwnProperty(i)) {
-                unanswered.push(i + 1);
+        $('.quiz-question').each(function(index) {
+            const $question = $(this);
+            const questionIndex = parseInt($question.data('question-index'));
+            const questionType = $question.data('question-type');
+            
+            let hasAnswer = false;
+            
+            switch (questionType) {
+                case 'multiple_choice':
+                    hasAnswer = $question.find('input[type="radio"]:checked, input[type="checkbox"]:checked').length > 0;
+                    break;
+                case 'true_false':
+                    hasAnswer = $question.find('input[type="radio"]:checked').length > 0;
+                    break;
+                case 'fill_blanks':
+                    hasAnswer = $question.find('.blank-answer').filter(function() {
+                        return $(this).val() !== '';
+                    }).length > 0;
+                    break;
+                case 'matching':
+                    hasAnswer = $question.find('.match-answer').filter(function() {
+                        return $(this).val() !== '';
+                    }).length > 0;
+                    break;
             }
-        }
+            
+            if (!hasAnswer && !currentQuiz.answers.hasOwnProperty(questionIndex)) {
+                unanswered.push(index + 1);
+            }
+        });
         
         if (unanswered.length > 0) {
             const message = (elearningQuiz.strings.unanswered_questions || 'You have unanswered questions: ') + 
@@ -430,6 +458,9 @@ jQuery(document).ready(function($) {
         }
         $(this).closest('.option-label').addClass('selected');
         
+        // FIXED: Save answer immediately on change
+        saveCurrentAnswer();
+        
         // Auto-advance for single-choice questions (optional UX enhancement)
         if (questionType === 'true_false' || (questionType === 'multiple_choice' && $question.find('input[type="radio"]').length > 0)) {
             setTimeout(() => {
@@ -450,6 +481,8 @@ jQuery(document).ready(function($) {
     
     function saveCurrentAnswer() {
         const $currentQuestion = $('.quiz-question.active');
+        if ($currentQuestion.length === 0) return;
+        
         const questionIndex = parseInt($currentQuestion.data('question-index'));
         const questionType = $currentQuestion.data('question-type');
         
@@ -482,34 +515,39 @@ jQuery(document).ready(function($) {
                 $currentQuestion.find('.blank-answer').each(function() {
                     answer.push($(this).val() || '');
                 });
+                // Only save if at least one blank is filled
+                if (answer.every(a => a === '')) {
+                    answer = null;
+                }
                 break;
                 
             case 'matching':
                 answer = {};
+                let hasMatches = false;
                 $currentQuestion.find('.match-answer').each(function() {
                     const $input = $(this);
                     const inputName = $input.attr('name');
                     const value = $input.val();
                     
-                    const leftIndexMatch = inputName.match(/\[(\d+)\]$/);
-                    if (leftIndexMatch && value) {
-                        const leftIndex = parseInt(leftIndexMatch[1]);
-                        const rightIndex = parseInt(value);
-                        answer[leftIndex] = rightIndex;
+                    if (value) {
+                        hasMatches = true;
+                        const leftIndexMatch = inputName.match(/\[(\d+)\]$/);
+                        if (leftIndexMatch) {
+                            const leftIndex = parseInt(leftIndexMatch[1]);
+                            const rightIndex = parseInt(value);
+                            answer[leftIndex] = rightIndex;
+                        }
                     }
                 });
+                if (!hasMatches) {
+                    answer = null;
+                }
                 break;
         }
         
-        if (answer !== null && answer !== undefined && answer !== '') {
-            if (Array.isArray(answer) && answer.length === 0) {
-                return;
-            }
-            if (typeof answer === 'object' && !Array.isArray(answer) && Object.keys(answer).length === 0) {
-                return;
-            }
-            
+        if (answer !== null && answer !== undefined) {
             currentQuiz.answers[questionIndex] = answer;
+            console.log('Saved answer for question', questionIndex, ':', answer);
         }
     }
     
@@ -638,6 +676,9 @@ jQuery(document).ready(function($) {
                 // Mark word as used
                 ui.draggable.addClass('used');
                 
+                // Save answer
+                saveCurrentAnswer();
+                
                 // Provide feedback
                 announceToScreenReader(`${word} placed in blank ${blankIndex + 1}`);
             }
@@ -696,6 +737,9 @@ jQuery(document).ready(function($) {
                 // Mark draggable item as used
                 ui.draggable.addClass('used');
                 
+                // Save answer
+                saveCurrentAnswer();
+                
                 // Provide feedback
                 announceToScreenReader(`${itemText} matched with item ${parseInt(leftIndex) + 1}`);
             }
@@ -720,6 +764,9 @@ jQuery(document).ready(function($) {
             // Mark draggable item as available again
             $question.find(`.draggable-item[data-right-index="${rightIndex}"]`).removeClass('used');
             
+            // Save answer
+            saveCurrentAnswer();
+            
             // Provide feedback
             announceToScreenReader(`Match removed from item ${parseInt(leftIndex) + 1}`);
         });
@@ -733,6 +780,9 @@ jQuery(document).ready(function($) {
             $(this).text('').removeClass('filled');
             $question.find(`.blank-answer[data-blank-index="${blankIndex}"]`).val('');
             $question.find(`.word-item[data-word="${word}"]`).removeClass('used');
+            
+            // Save answer
+            saveCurrentAnswer();
             
             announceToScreenReader(`${word} removed from blank ${blankIndex + 1}`);
         });

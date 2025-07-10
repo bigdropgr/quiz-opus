@@ -1,6 +1,6 @@
 <?php
 /**
- * AJAX Class - Complete Quiz Functionality with Rate Limiting
+ * AJAX Class - FIXED VERSION 2.0 with Section Content Loading
  * 
  * Handles all AJAX requests for the e-learning system
  */
@@ -28,6 +28,10 @@ class ELearning_Ajax {
         // Lesson progress AJAX handlers
         add_action('wp_ajax_elearning_update_lesson_progress', [$this, 'updateLessonProgress']);
         add_action('wp_ajax_nopriv_elearning_update_lesson_progress', [$this, 'updateLessonProgress']);
+        
+        // NEW: Get section content for dynamic loading
+        add_action('wp_ajax_elearning_get_section_content', [$this, 'getSectionContent']);
+        add_action('wp_ajax_nopriv_elearning_get_section_content', [$this, 'getSectionContent']);
         
         // New: Get quiz time limit
         add_action('wp_ajax_elearning_get_quiz_settings', [$this, 'getQuizSettings']);
@@ -103,11 +107,46 @@ class ELearning_Ajax {
     }
     
     /**
+     * Get section content for dynamic loading - NEW METHOD
+     */
+    public function getSectionContent(): void {
+        // Verify nonce
+        if (!wp_verify_nonce($_POST['nonce'] ?? '', 'elearning_quiz_nonce')) {
+            wp_send_json_error(__('Security check failed', 'elearning-quiz'));
+        }
+        
+        $lesson_id = intval($_POST['lesson_id'] ?? 0);
+        $section_index = intval($_POST['section_index'] ?? 0);
+        
+        if (!$lesson_id) {
+            wp_send_json_error(__('Invalid lesson ID', 'elearning-quiz'));
+        }
+        
+        // Get lesson sections
+        $sections = get_post_meta($lesson_id, '_lesson_sections', true) ?: [];
+        
+        if (!isset($sections[$section_index])) {
+            wp_send_json_error(__('Section not found', 'elearning-quiz'));
+        }
+        
+        $section = $sections[$section_index];
+        
+        wp_send_json_success([
+            'content' => wp_kses_post($section['content']),
+            'title' => esc_html($section['title'])
+        ]);
+    }
+    
+    /**
      * Submit quiz and calculate results with improved validation
      */
     public function submitQuiz(): void {
+        // Add error logging for debugging
+        error_log('=== SUBMIT QUIZ CALLED ===');
+        
         // Verify nonce
         if (!wp_verify_nonce($_POST['nonce'] ?? '', 'elearning_quiz_nonce')) {
+            error_log('Nonce verification failed');
             wp_send_json_error(__('Security check failed', 'elearning-quiz'));
         }
         
@@ -115,7 +154,11 @@ class ELearning_Ajax {
         $answers_json = wp_unslash($_POST['answers'] ?? '');
         $question_timings_json = wp_unslash($_POST['question_timings'] ?? '{}');
         
+        error_log('Attempt ID: ' . $attempt_id);
+        error_log('Raw answers JSON: ' . $answers_json);
+        
         if (!$attempt_id) {
+            error_log('Invalid attempt ID');
             wp_send_json_error(__('Invalid attempt ID', 'elearning-quiz'));
         }
         
@@ -127,10 +170,12 @@ class ELearning_Ajax {
         ), ARRAY_A);
         
         if (!$attempt) {
+            error_log('Quiz attempt not found');
             wp_send_json_error(__('Quiz attempt not found', 'elearning-quiz'));
         }
         
         if ($attempt['status'] !== 'started') {
+            error_log('Quiz already submitted');
             wp_send_json_error(__('This quiz has already been submitted', 'elearning-quiz'));
         }
         
@@ -139,6 +184,7 @@ class ELearning_Ajax {
         if ($time_limit > 0) {
             $elapsed_time = time() - strtotime($attempt['start_time']);
             if ($elapsed_time > ($time_limit * 60)) {
+                error_log('Quiz time limit exceeded');
                 wp_send_json_error(__('Quiz time limit exceeded', 'elearning-quiz'));
             }
         }
@@ -154,13 +200,18 @@ class ELearning_Ajax {
         $user_answers = json_decode($answers_json, true) ?: [];
         $question_timings = json_decode($question_timings_json, true) ?: [];
         
+        error_log('Parsed user answers: ' . print_r($user_answers, true));
+        
         // Validate answers
         if (empty($user_answers)) {
+            error_log('No answers provided');
             wp_send_json_error(__('No answers provided', 'elearning-quiz'));
         }
         
         // Calculate results
         $results = $this->calculateQuizResults($questions, $user_answers, $passing_score);
+        
+        error_log('Quiz results: ' . print_r($results, true));
         
         // Save detailed answers
         foreach ($user_answers as $question_index => $user_answer) {
@@ -169,6 +220,8 @@ class ELearning_Ajax {
                 $correct_answer = $this->getCorrectAnswer($question);
                 $is_correct = $this->isAnswerCorrect($question, $user_answer, $correct_answer);
                 $time_spent = $question_timings[$question_index] ?? null;
+                
+                error_log("Saving answer for question $question_index - Type: {$question['type']}, Correct: " . ($is_correct ? 'Yes' : 'No'));
                 
                 ELearning_Database::saveQuizAnswer(
                     $attempt_id,
@@ -193,6 +246,7 @@ class ELearning_Ajax {
         );
         
         if (!$completed) {
+            error_log('Failed to save quiz results');
             wp_send_json_error(__('Failed to save quiz results', 'elearning-quiz'));
         }
         
@@ -215,6 +269,7 @@ class ELearning_Ajax {
         // Get difficult questions for this quiz
         $response_data['difficult_questions'] = ELearning_Database::getDifficultQuestions($quiz_id, 3);
         
+        error_log('Sending success response');
         wp_send_json_success($response_data);
     }
     
@@ -278,25 +333,38 @@ class ELearning_Ajax {
         $total_questions = count($user_answers);
         $correct_answers = 0;
         
+        error_log('=== CALCULATING QUIZ RESULTS ===');
+        error_log('Total questions to check: ' . $total_questions);
+        
         foreach ($user_answers as $question_index => $user_answer) {
             if (isset($questions[$question_index])) {
                 $question = $questions[$question_index];
                 
                 // Validate question has required fields
                 if (empty($question['type']) || empty($question['question'])) {
+                    error_log("Question $question_index missing required fields");
                     continue;
                 }
                 
                 $correct_answer = $this->getCorrectAnswer($question);
                 
+                error_log("Question $question_index - Type: {$question['type']}");
+                error_log("User answer: " . print_r($user_answer, true));
+                error_log("Correct answer: " . print_r($correct_answer, true));
+                
                 if ($this->isAnswerCorrect($question, $user_answer, $correct_answer)) {
                     $correct_answers++;
+                    error_log("Question $question_index - CORRECT");
+                } else {
+                    error_log("Question $question_index - INCORRECT");
                 }
             }
         }
         
         $score = $total_questions > 0 ? ($correct_answers / $total_questions) * 100 : 0;
         $passed = $score >= $passing_score;
+        
+        error_log("Final score: $score% ($correct_answers/$total_questions correct)");
         
         return [
             'score' => round($score, 2),
@@ -392,24 +460,45 @@ class ELearning_Ajax {
                 
             case 'matching':
                 if (!is_array($user_answer) || !is_array($correct_answer)) {
+                    error_log('Matching: Invalid answer format');
                     return false;
                 }
                 
-                // Check if all correct matches are present
+                error_log('Matching - User answer: ' . print_r($user_answer, true));
+                error_log('Matching - Correct answer: ' . print_r($correct_answer, true));
+                
+                // FIXED: Check if all correct matches are present
+                $all_matches_correct = true;
+                
                 foreach ($correct_answer as $match) {
-                    $left_index = $match['left'] ?? null;
-                    $right_index = $match['right'] ?? null;
+                    $left_index = isset($match['left']) ? strval($match['left']) : null;
+                    $right_index = isset($match['right']) ? strval($match['right']) : null;
                     
                     if ($left_index === null || $right_index === null) {
+                        error_log("Invalid match format in correct answer");
                         continue;
                     }
                     
-                    if (!isset($user_answer[$left_index]) || intval($user_answer[$left_index]) !== intval($right_index)) {
-                        return false;
+                    // Check if user provided this match
+                    $user_right_index = isset($user_answer[$left_index]) ? strval($user_answer[$left_index]) : null;
+                    
+                    error_log("Checking match: left=$left_index should match right=$right_index, user matched with right=$user_right_index");
+                    
+                    if ($user_right_index === null || $user_right_index !== $right_index) {
+                        $all_matches_correct = false;
+                        error_log("Match incorrect or missing");
+                        break;
                     }
                 }
                 
-                return true;
+                // Also check that user didn't provide extra incorrect matches
+                if ($all_matches_correct && count($user_answer) !== count($correct_answer)) {
+                    error_log("User provided different number of matches");
+                    $all_matches_correct = false;
+                }
+                
+                error_log('Matching result: ' . ($all_matches_correct ? 'CORRECT' : 'INCORRECT'));
+                return $all_matches_correct;
                 
             default:
                 return false;
@@ -494,9 +583,22 @@ class ELearning_Ajax {
             case 'matching':
                 if (is_array($answer)) {
                     $matches = [];
-                    foreach ($answer as $left => $right) {
-                        if (isset($question['left_column'][$left]) && isset($question['right_column'][$right])) {
-                            $matches[] = $question['left_column'][$left] . ' → ' . $question['right_column'][$right];
+                    
+                    // For correct answer display (array of match objects)
+                    if (isset($answer[0]) && is_array($answer[0]) && isset($answer[0]['left'])) {
+                        foreach ($answer as $match) {
+                            $left_idx = $match['left'];
+                            $right_idx = $match['right'];
+                            if (isset($question['left_column'][$left_idx]) && isset($question['right_column'][$right_idx])) {
+                                $matches[] = $question['left_column'][$left_idx] . ' → ' . $question['right_column'][$right_idx];
+                            }
+                        }
+                    } else {
+                        // For user answer display (associative array)
+                        foreach ($answer as $left => $right) {
+                            if (isset($question['left_column'][$left]) && isset($question['right_column'][$right])) {
+                                $matches[] = $question['left_column'][$left] . ' → ' . $question['right_column'][$right];
+                            }
                         }
                     }
                     return implode('; ', $matches);
