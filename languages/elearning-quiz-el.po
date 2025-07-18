@@ -1,0 +1,1146 @@
+# Greek Translation for E-Learning Quiz System
+# Copyright (C) 2024
+# This file is distributed under the same license as the E-Learning Quiz System package.
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Learning Quiz System 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00:00+00:00\n"
+"PO-Revision-Date: 2024-01-01 00:00:00+00:00\n"
+"Last-Translator: \n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit\n"
+
+# Common Actions
+msgid "Start Quiz"
+msgstr "Ξεκινήστε το Κουίζ"
+
+msgid "Retake Quiz"
+msgstr "Επαναλάβετε το Κουίζ"
+
+msgid "Retry Quiz"
+msgstr "Δοκιμάστε Ξανά"
+
+msgid "Submit Quiz"
+msgstr "Υποβολή Κουίζ"
+
+msgid "Take Quiz"
+msgstr "Κάντε το Κουίζ"
+
+msgid "View Quiz"
+msgstr "Προβολή Κουίζ"
+
+msgid "Preview Quiz"
+msgstr "Προεπισκόπηση Κουίζ"
+
+# Lesson Actions
+msgid "Start Lesson"
+msgstr "Ξεκινήστε το Μάθημα"
+
+msgid "Review Lesson"
+msgstr "Ανασκόπηση Μαθήματος"
+
+msgid "View Lesson"
+msgstr "Προβολή Μαθήματος"
+
+msgid "Go to Lesson"
+msgstr "Μετάβαση στο Μάθημα"
+
+msgid "Preview Lesson"
+msgstr "Προεπισκόπηση Μαθήματος"
+
+# Common UI Elements
+msgid "Loading..."
+msgstr "Φόρτωση..."
+
+msgid "An error occurred. Please try again."
+msgstr "Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά."
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Next"
+msgstr "Επόμενο"
+
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+msgid "Submit"
+msgstr "Υποβολή"
+
+msgid "Confirm"
+msgstr "Επιβεβαίωση"
+
+# Quiz Specific
+msgid "Questions"
+msgstr "Ερωτήσεις"
+
+msgid "Question"
+msgstr "Ερώτηση"
+
+msgid "Passing Score"
+msgstr "Ελάχιστο απαιτούμενο ποσοστό"
+
+msgid "Time Limit"
+msgstr "Χρονικό Όριο"
+
+msgid "None"
+msgstr "Κανένα"
+
+msgid "Congratulations!"
+msgstr "Συγχαρητήρια!"
+
+msgid "You have successfully passed this quiz."
+msgstr "Περάσατε επιτυχώς το κουίζ."
+
+msgid "You did not pass this quiz. Please review the material and try again."
+msgstr "Δεν περάσατε το κουίζ. Παρακαλώ μελετήστε το υλικό και δοκιμάστε ξανά."
+
+msgid "Try Again"
+msgstr "Δοκιμάστε Ξανά"
+
+msgid "Correct Answers"
+msgstr "Σωστές Απαντήσεις"
+
+msgid "Your Answer"
+msgstr "Η Απάντησή σας"
+
+msgid "Correct Answer"
+msgstr "Σωστή Απάντηση"
+
+msgid "Score"
+msgstr "Βαθμολογία"
+
+msgid "Attempts"
+msgstr "Προσπάθειες"
+
+msgid "Best Score"
+msgstr "Καλύτερη Βαθμολογία"
+
+# Lesson Specific
+msgid "Sections"
+msgstr "Ενότητες"
+
+msgid "Section"
+msgstr "Ενότητα"
+
+msgid "Mark as Complete"
+msgstr "Σήμανση ως Ολοκληρωμένο"
+
+msgid "Completed"
+msgstr "Ολοκληρωμένο"
+
+msgid "In Progress"
+msgstr "Σε Εξέλιξη"
+
+msgid "Locked"
+msgstr "Κλειδωμένο"
+
+msgid "Complete the previous section to unlock this content."
+msgstr "Ολοκληρώστε την προηγούμενη ενότητα για να ξεκλειδώσετε αυτό το περιεχόμενο."
+
+# Status Messages
+msgid "This quiz has no questions yet."
+msgstr "Αυτό το κουίζ δεν έχει ακόμη ερωτήσεις."
+
+msgid "This lesson has no sections yet."
+msgstr "Αυτό το μάθημα δεν έχει ακόμη ενότητες."
+
+msgid "No lessons found."
+msgstr "Δεν βρέθηκαν μαθήματα."
+
+msgid "No quizzes found."
+msgstr "Δεν βρέθηκαν κουίζ."
+
+msgid "Quiz Locked"
+msgstr "Κλειδωμένο Κουίζ"
+
+msgid "You must finish %s in order to take this quiz."
+msgstr "Πρέπει να ολοκληρώσετε το %s για να κάνετε αυτό το κουίζ."
+
+# Progress
+msgid "Your Progress"
+msgstr "Η Πρόοδός σας"
+
+msgid "%d%% complete"
+msgstr "%d%% ολοκληρωμένο"
+
+msgid "%d of %d sections completed"
+msgstr "%d από %d ενότητες ολοκληρωμένες"
+
+# Question Types
+msgid "Multiple Choice"
+msgstr "Πολλαπλής Επιλογής"
+
+msgid "True/False"
+msgstr "Σωστό/Λάθος"
+
+msgid "Fill in the Blanks"
+msgstr "Συμπληρώστε τα Κενά"
+
+msgid "Matching"
+msgstr "Αντιστοίχιση"
+
+# Question Instructions
+msgid "Select the correct answer:"
+msgstr "Επιλέξτε τη σωστή απάντηση:"
+
+msgid "Select all correct answers:"
+msgstr "Επιλέξτε όλες τις σωστές απαντήσεις:"
+
+msgid "Select True or False:"
+msgstr "Επιλέξτε Σωστό ή Λάθος:"
+
+msgid "Drag words to fill the blanks:"
+msgstr "Σύρετε τις λέξεις για να συμπληρώσετε τα κενά:"
+
+msgid "Drag items from the right column to match with items in the left column:"
+msgstr "Σύρετε τα στοιχεία από τη δεξιά στήλη για αντιστοίχιση με τα στοιχεία στην αριστερή στήλη:"
+
+# Admin
+msgid "Add"
+msgstr "Προσθήκη"
+
+msgid "Add New"
+msgstr "Προσθήκη Νέου"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+msgid "Analytics"
+msgstr "Αναλυτικά Στοιχεία"
+
+msgid "Dashboard"
+msgstr "Πίνακας Ελέγχου"
+
+msgid "Import"
+msgstr "Εισαγωγή"
+
+msgid "Export"
+msgstr "Εξαγωγή"
+
+# Post Type Labels
+msgid "Lessons"
+msgstr "Μαθήματα"
+
+msgid "Lesson"
+msgstr "Μάθημα"
+
+msgid "Add New Lesson"
+msgstr "Προσθήκη Νέου Μαθήματος"
+
+msgid "Edit Lesson"
+msgstr "Επεξεργασία Μαθήματος"
+
+msgid "New Lesson"
+msgstr "Νέο Μάθημα"
+
+msgid "All Lessons"
+msgstr "Όλα τα Μαθήματα"
+
+msgid "Search Lessons"
+msgstr "Αναζήτηση Μαθημάτων"
+
+msgid "No lessons found"
+msgstr "Δεν βρέθηκαν μαθήματα"
+
+msgid "Quizzes"
+msgstr "Κουίζ"
+
+msgid "Quiz"
+msgstr "Κουίζ"
+
+msgid "Add New Quiz"
+msgstr "Προσθήκη Νέου Κουίζ"
+
+msgid "Edit Quiz"
+msgstr "Επεξεργασία Κουίζ"
+
+msgid "New Quiz"
+msgstr "Νέο Κουίζ"
+
+msgid "All Quizzes"
+msgstr "Όλα τα Κουίζ"
+
+msgid "Search Quizzes"
+msgstr "Αναζήτηση Κουίζ"
+
+msgid "No quizzes found"
+msgstr "Δεν βρέθηκαν κουίζ"
+
+# Time
+msgid "minutes"
+msgstr "λεπτά"
+
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+msgid "Time Remaining"
+msgstr "Υπολειπόμενος Χρόνος"
+
+msgid "Time's Up!"
+msgstr "Τελείωσε ο Χρόνος!"
+
+# Loan Calculator
+msgid "Loan Calculator"
+msgstr "Υπολογιστής Δανείου"
+
+msgid "Loan Amount"
+msgstr "Ποσό Δανείου"
+
+msgid "Annual Interest Rate"
+msgstr "Ετήσιο Επιτόκιο"
+
+msgid "Loan Term"
+msgstr "Διάρκεια Δανείου"
+
+msgid "years"
+msgstr "έτη"
+
+msgid "Calculate"
+msgstr "Υπολογισμός"
+
+msgid "Monthly Payment"
+msgstr "Μηνιαία Δόση"
+
+msgid "Total Payment"
+msgstr "Συνολική Πληρωμή"
+
+msgid "Total Interest"
+msgstr "Συνολικός Τόκος"
+
+# Validation Messages
+msgid "This field is required"
+msgstr "Αυτό το πεδίο είναι υποχρεωτικό"
+
+msgid "Please enter a valid value"
+msgstr "Παρακαλώ εισάγετε έγκυρη τιμή"
+
+msgid "Are you sure you want to delete this item?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το στοιχείο;"
+
+# True/False
+msgid "True"
+msgstr "Σωστό"
+
+msgid "False"
+msgstr "Λάθος"
+
+# Additional Phrases
+msgid "Questions:"
+msgstr "Ερωτήσεις:"
+
+msgid "Passing Score:"
+msgstr "Ελάχιστο Απαιτούμενο Ποσοστό:"
+
+msgid "Time Limit:"
+msgstr "Χρονικό Όριο:"
+
+msgid "No time limit"
+msgstr "Χωρίς χρονικό όριο"
+
+msgid "%d questions"
+msgstr "%d ερωτήσεις"
+
+msgid "%d sections"
+msgstr "%d ενότητες"
+
+msgid "%d%% to pass"
+msgstr "%d%% για επιτυχία"
+
+msgid "%d min"
+msgstr "%d λεπτά"
+
+msgid "Best: %d%%"
+msgstr "Καλύτερο: %d%%"
+
+msgid "%d attempts"
+msgstr "%d προσπάθειες"
+
+msgid "Complete %s first"
+msgstr "Ολοκληρώστε πρώτα το %s"
+
+msgid "You have already passed this quiz."
+msgstr "Έχετε ήδη περάσει αυτό το κουίζ."
+
+msgid "Your best score: %.1f%%"
+msgstr "Η καλύτερη βαθμολογία σας: %.1f%%"
+
+msgid "Total attempts: %d"
+msgstr "Συνολικές προσπάθειες: %d"
+
+msgid "E-Learning System"
+msgstr "Σύστημα Ηλεκτρονικής Μάθησης"
+
+msgid "E-Learning"
+msgstr "Ηλεκτρονική Μάθηση"
+
+msgid "Ready for the Quiz?"
+msgstr "Έτοιμοι για το Κουίζ;"
+
+msgid "You have completed all sections. Test your knowledge with the quiz!"
+msgstr "Ολοκληρώσατε όλες τις ενότητες. Δοκιμάστε τις γνώσεις σας με το κουίζ!"
+
+msgid "Question %d"
+msgstr "Ερώτηση %d"
+
+msgid "Question %d of %d"
+msgstr "Ερώτηση %d από %d"
+
+msgid "Processing your answers..."
+msgstr "Επεξεργασία των απαντήσεών σας..."
+
+msgid "Submit Quiz?"
+msgstr "Υποβολή Κουίζ;"
+
+msgid "Are you sure you want to submit your answers? You cannot change them after submission."
+msgstr "Είστε σίγουροι ότι θέλετε να υποβάλετε τις απαντήσεις σας; Δεν μπορείτε να τις αλλάξετε μετά την υποβολή."
+
+msgid "Drop here"
+msgstr "Αφήστε εδώ"
+
+msgid "Word Bank:"
+msgstr "Τράπεζα Λέξεων:"
+
+msgid "Match These:"
+msgstr "Αντιστοιχίστε Αυτά:"
+
+msgid "Available Options:"
+msgstr "Διαθέσιμες Επιλογές:"
+
+msgid "Option text"
+msgstr "Κείμενο επιλογής"
+
+msgid "Correct"
+msgstr "Σωστό"
+
+msgid "Word"
+msgstr "Λέξη"
+
+msgid "Left item"
+msgstr "Αριστερό στοιχείο"
+
+msgid "Right item"
+msgstr "Δεξί στοιχείο"
+
+msgid "matches with"
+msgstr "ταιριάζει με"
+
+msgid "Select left item"
+msgstr "Επιλέξτε αριστερό στοιχείο"
+
+msgid "Select right item"
+msgstr "Επιλέξτε δεξί στοιχείο"
+
+msgid "Left Column"
+msgstr "Αριστερή Στήλη"
+
+msgid "Right Column"
+msgstr "Δεξιά Στήλη"
+
+msgid "Correct Matches"
+msgstr "Σωστές Αντιστοιχίσεις"
+
+msgid "Add Left Item"
+msgstr "Προσθήκη Αριστερού Στοιχείου"
+
+msgid "Add Right Item"
+msgstr "Προσθήκη Δεξιού Στοιχείου"
+
+msgid "Add Match"
+msgstr "Προσθήκη Αντιστοίχισης"
+
+msgid "Add Option"
+msgstr "Προσθήκη Επιλογής"
+
+msgid "Add Word"
+msgstr "Προσθήκη Λέξης"
+
+msgid "Add Section"
+msgstr "Προσθήκη Ενότητας"
+
+msgid "Add Question"
+msgstr "Προσθήκη Ερώτησης"
+
+msgid "Text with Blanks"
+msgstr "Κείμενο με Κενά"
+
+msgid "Use {{blank}} to mark where blanks should appear."
+msgstr "Χρησιμοποιήστε {{blank}} για να σημειώσετε πού θα εμφανίζονται τα κενά."
+
+msgid "Options"
+msgstr "Επιλογές"
+
+msgid "Question Type"
+msgstr "Τύπος Ερώτησης"
+
+msgid "Associated Quiz"
+msgstr "Συσχετισμένο Κουίζ"
+
+msgid "Associated Lesson"
+msgstr "Συσχετισμένο Μάθημα"
+
+msgid "Select Quiz"
+msgstr "Επιλέξτε Κουίζ"
+
+msgid "Select Lesson"
+msgstr "Επιλέξτε Μάθημα"
+
+msgid "No Quiz"
+msgstr "Χωρίς Κουίζ"
+
+msgid "No Lesson"
+msgstr "Χωρίς Μάθημα"
+
+msgid "Lesson Sections"
+msgstr "Ενότητες Μαθήματος"
+
+msgid "Quiz Questions"
+msgstr "Ερωτήσεις Κουίζ"
+
+msgid "Quiz Settings"
+msgstr "Ρυθμίσεις Κουίζ"
+
+msgid "Section Title"
+msgstr "Τίτλος Ενότητας"
+
+msgid "Section Content"
+msgstr "Περιεχόμενο Ενότητας"
+
+msgid "Section %s"
+msgstr "Ενότητα %s"
+
+msgid "Import Questions"
+msgstr "Εισαγωγή Ερωτήσεων"
+
+msgid "Export Questions"
+msgstr "Εξαγωγή Ερωτήσεων"
+
+msgid "Import/Export"
+msgstr "Εισαγωγή/Εξαγωγή"
+
+msgid "Latest Lessons"
+msgstr "Τελευταία Μαθήματα"
+
+msgid "Latest Quizzes"
+msgstr "Τελευταία Κουίζ"
+
+msgid "Passed"
+msgstr "Επιτυχία"
+
+msgid "Failed"
+msgstr "Αποτυχία"
+
+msgid "Please specify a lesson ID."
+msgstr "Παρακαλώ καθορίστε το ID μαθήματος."
+
+msgid "Lesson not found."
+msgstr "Το μάθημα δεν βρέθηκε."
+
+msgid "Please specify a quiz ID."
+msgstr "Παρακαλώ καθορίστε το ID κουίζ."
+
+msgid "Quiz not found."
+msgstr "Το κουίζ δεν βρέθηκε."
+
+msgid "Quiz Statistics"
+msgstr "Στατιστικά Κουίζ"
+
+msgid "Total Attempts"
+msgstr "Συνολικές Προσπάθειες"
+
+msgid "Average Score"
+msgstr "Μέσος Όρος Βαθμολογίας"
+
+msgid "Recent Quiz Attempts"
+msgstr "Πρόσφατες Προσπάθειες Κουίζ"
+
+msgid "Lesson Progress"
+msgstr "Πρόοδος Μαθήματος"
+
+msgid "No quiz attempts yet."
+msgstr "Δεν υπάρχουν ακόμη προσπάθειες κουίζ."
+
+msgid "No lessons started yet."
+msgstr "Δεν έχουν ξεκινήσει μαθήματα ακόμη."
+
+msgid "Security check failed"
+msgstr "Αποτυχία ελέγχου ασφαλείας"
+
+msgid "Invalid quiz ID"
+msgstr "Μη έγκυρο ID κουίζ"
+
+msgid "Quiz not found or not available"
+msgstr "Το κουίζ δεν βρέθηκε ή δεν είναι διαθέσιμο"
+
+msgid "This quiz has no questions"
+msgstr "Αυτό το κουίζ δεν έχει ερωτήσεις"
+
+msgid "Failed to start quiz attempt. Please try again."
+msgstr "Αποτυχία έναρξης προσπάθειας κουίζ. Παρακαλώ δοκιμάστε ξανά."
+
+msgid "Quiz started successfully"
+msgstr "Το κουίζ ξεκίνησε επιτυχώς"
+
+msgid "Invalid attempt ID"
+msgstr "Μη έγκυρο ID προσπάθειας"
+
+msgid "Quiz attempt not found"
+msgstr "Η προσπάθεια κουίζ δεν βρέθηκε"
+
+msgid "This quiz has already been submitted"
+msgstr "Αυτό το κουίζ έχει ήδη υποβληθεί"
+
+msgid "Quiz time limit exceeded"
+msgstr "Υπέρβαση χρονικού ορίου κουίζ"
+
+msgid "No answers provided"
+msgstr "Δεν δόθηκαν απαντήσεις"
+
+msgid "Failed to save quiz results"
+msgstr "Αποτυχία αποθήκευσης αποτελεσμάτων κουίζ"
+
+msgid "Progress saved"
+msgstr "Η πρόοδος αποθηκεύτηκε"
+
+msgid "Invalid lesson ID"
+msgstr "Μη έγκυρο ID μαθήματος"
+
+msgid "Section not found"
+msgstr "Η ενότητα δεν βρέθηκε"
+
+msgid "Progress updated"
+msgstr "Η πρόοδος ενημερώθηκε"
+
+msgid "Failed to update progress"
+msgstr "Αποτυχία ενημέρωσης προόδου"
+
+msgid "E-Learning System Dashboard"
+msgstr "Πίνακας Ελέγχου Συστήματος Ηλεκτρονικής Μάθησης"
+
+msgid "Total Quiz Attempts"
+msgstr "Συνολικές Προσπάθειες Κουίζ"
+
+msgid "Completed Quizzes"
+msgstr "Ολοκληρωμένα Κουίζ"
+
+msgid "Passed Quizzes"
+msgstr "Επιτυχημένα Κουίζ"
+
+msgid "Unique Users"
+msgstr "Μοναδικοί Χρήστες"
+
+msgid "Usage by Language"
+msgstr "Χρήση ανά Γλώσσα"
+
+msgid "English"
+msgstr "Αγγλικά"
+
+msgid "Greek"
+msgstr "Ελληνικά"
+
+msgid "Global Average Score"
+msgstr "Γενικός Μέσος Όρος Βαθμολογίας"
+
+msgid "Quick Actions"
+msgstr "Γρήγορες Ενέργειες"
+
+msgid "Create New Lesson"
+msgstr "Δημιουργία Νέου Μαθήματος"
+
+msgid "Create New Quiz"
+msgstr "Δημιουργία Νέου Κουίζ"
+
+msgid "View Analytics"
+msgstr "Προβολή Αναλυτικών Στοιχείων"
+
+msgid "General Settings"
+msgstr "Γενικές Ρυθμίσεις"
+
+msgid "Data Retention (Days)"
+msgstr "Διατήρηση Δεδομένων (Ημέρες)"
+
+msgid "Default Passing Score (%)"
+msgstr "Προεπιλεγμένος Βαθμός Επιτυχίας (%)"
+
+msgid "Default Questions Per Quiz"
+msgstr "Προεπιλεγμένες Ερωτήσεις ανά Κουίζ"
+
+msgid "Show Correct Answers"
+msgstr "Εμφάνιση Σωστών Απαντήσεων"
+
+msgid "Showing %d-%d of %d results"
+msgstr "Εμφάνιση %d-%d από %d αποτελέσματα"
+
+msgid "Language"
+msgstr "Γλώσσα"
+
+msgid "Select Language"
+msgstr "Επιλέξτε Γλώσσα"
+
+msgid "You must complete the lesson before taking this quiz."
+msgstr "Πρέπει να ολοκληρώσετε το μάθημα πριν κάνετε αυτό το κουίζ."
+
+msgid "Marking Complete..."
+msgstr "Σήμανση ως Ολοκληρωμένο..."
+
+msgid "Error updating progress"
+msgstr "Σφάλμα ενημέρωσης προόδου"
+
+msgid "Rich editor will be initialized when section is added."
+msgstr "Ο επεξεργαστής εμπλουτισμένου κειμένου θα αρχικοποιηθεί όταν προστεθεί η ενότητα."
+
+msgid "Yes - Show correct answers after submission"
+msgstr "Ναι - Εμφάνιση σωστών απαντήσεων μετά την υποβολή"
+
+msgid "No - Only show score"
+msgstr "Όχι - Εμφάνιση μόνο βαθμολογίας"
+
+msgid "Randomize Questions"
+msgstr "Τυχαιοποίηση Ερωτήσεων"
+
+msgid "Randomize Answers"
+msgstr "Τυχαιοποίηση Απαντήσεων"
+
+msgid "Yes"
+msgstr "Ναι"
+
+msgid "No"
+msgstr "Όχι"
+
+msgid "Show questions in random order for each attempt."
+msgstr "Εμφάνιση ερωτήσεων σε τυχαία σειρά για κάθε προσπάθεια."
+
+msgid "Show answer options in random order (for multiple choice questions)."
+msgstr "Εμφάνιση επιλογών απάντησης σε τυχαία σειρά (για ερωτήσεις πολλαπλής επιλογής)."
+
+msgid "Questions to Show"
+msgstr "Ερωτήσεις προς Εμφάνιση"
+
+msgid "Number of questions to show from the question bank. Leave empty to show all."
+msgstr "Αριθμός ερωτήσεων που θα εμφανίζονται από την τράπεζα ερωτήσεων. Αφήστε κενό για εμφάνιση όλων."
+
+msgid "Time Limit (minutes)"
+msgstr "Χρονικό Όριο (λεπτά)"
+
+msgid "Time limit in minutes. Set to 0 for no time limit."
+msgstr "Χρονικό όριο σε λεπτά. Ορίστε 0 για απεριόριστο χρόνο."
+
+msgid "Minimum percentage required to pass the quiz."
+msgstr "Ελάχιστο ποσοστό που απαιτείται για επιτυχία στο κουίζ."
+
+msgid "Select a quiz to associate with this lesson. Students will take this quiz after completing the lesson."
+msgstr "Επιλέξτε ένα κουίζ για σύνδεση με αυτό το μάθημα. Οι μαθητές θα κάνουν αυτό το κουίζ μετά την ολοκλήρωση του μαθήματος."
+
+msgid "Select a lesson this quiz belongs to. This creates a two-way association."
+msgstr "Επιλέξτε ένα μάθημα στο οποίο ανήκει αυτό το κουίζ. Αυτό δημιουργεί μια αμφίδρομη σύνδεση."
+
+msgid "Too many attempts. Please wait a minute before trying again."
+msgstr "Πάρα πολλές προσπάθειες. Παρακαλώ περιμένετε ένα λεπτό πριν δοκιμάσετε ξανά."
+
+msgid "No valid questions found in this quiz"
+msgstr "Δεν βρέθηκαν έγκυρες ερωτήσεις σε αυτό το κουίζ"
+
+msgid "One minute remaining"
+msgstr "Απομένει ένα λεπτό"
+
+msgid "Your quiz is being submitted..."
+msgstr "Το κουίζ σας υποβάλλεται..."
+
+msgid "You have unsaved progress. Are you sure you want to leave?"
+msgstr "Έχετε μη αποθηκευμένη πρόοδο. Είστε σίγουροι ότι θέλετε να φύγετε;"
+
+msgid "Skip to quiz content"
+msgstr "Μετάβαση στο περιεχόμενο του κουίζ"
+
+msgid "No answer provided"
+msgstr "Δεν δόθηκε απάντηση"
+
+msgid "Review Your Answers"
+msgstr "Ανασκόπηση των Απαντήσεών σας"
+
+msgid "Most Challenging Questions"
+msgstr "Πιο Δύσκολες Ερωτήσεις"
+
+msgid "Calculating..."
+msgstr "Υπολογισμός..."
+
+msgid "Calculation Results"
+msgstr "Αποτελέσματα Υπολογισμού"
+
+msgid "Show Payment Breakdown"
+msgstr "Εμφάνιση Ανάλυσης Πληρωμής"
+
+msgid "Hide Payment Breakdown"
+msgstr "Απόκρυψη Ανάλυσης Πληρωμής"
+
+msgid "Principal"
+msgstr "Κεφάλαιο"
+
+msgid "Interest"
+msgstr "Τόκος"
+
+msgid "Please enter valid numbers"
+msgstr "Παρακαλώ εισάγετε έγκυρους αριθμούς"
+
+msgid "Please enter positive values"
+msgstr "Παρακαλώ εισάγετε θετικές τιμές"
+
+msgid "Calculation error occurred"
+msgstr "Παρουσιάστηκε σφάλμα υπολογισμού"
+
+msgid "Content Editor"
+msgstr "Επεξεργαστής Περιεχομένου"
+
+msgid "You do not have permission to perform this action"
+msgstr "Δεν έχετε άδεια να εκτελέσετε αυτήν την ενέργεια"
+
+msgid "Invalid editor ID"
+msgstr "Μη έγκυρο ID επεξεργαστή"
+
+msgid "E-Learning Settings"
+msgstr "Ρυθμίσεις Ηλεκτρονικής Μάθησης"
+
+msgid "Configure general settings for the e-learning system."
+msgstr "Διαμορφώστε τις γενικές ρυθμίσεις για το σύστημα ηλεκτρονικής μάθησης."
+
+msgid "Number of days to keep quiz and lesson data. Set to 0 to keep data indefinitely."
+msgstr "Αριθμός ημερών διατήρησης δεδομένων κουίζ και μαθημάτων. Ορίστε 0 για διατήρηση δεδομένων επ' αόριστον."
+
+msgid "Default passing score percentage for new quizzes."
+msgstr "Προεπιλεγμένο ποσοστό βαθμού επιτυχίας για νέα κουίζ."
+
+msgid "Default number of questions to show per quiz."
+msgstr "Προεπιλεγμένος αριθμός ερωτήσεων που θα εμφανίζονται ανά κουίζ."
+
+msgid "Show correct answers after quiz completion"
+msgstr "Εμφάνιση σωστών απαντήσεων μετά την ολοκλήρωση του κουίζ"
+
+msgid "Data Management"
+msgstr "Διαχείριση Δεδομένων"
+
+msgid "Clean up old quiz and lesson data based on your retention settings."
+msgstr "Καθαρισμός παλιών δεδομένων κουίζ και μαθημάτων βάσει των ρυθμίσεων διατήρησης."
+
+msgid "Cleanup Old Data Now"
+msgstr "Καθαρισμός Παλιών Δεδομένων Τώρα"
+
+msgid "Are you sure you want to cleanup old data? This action cannot be undone."
+msgstr "Είστε σίγουροι ότι θέλετε να καθαρίσετε τα παλιά δεδομένα; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+msgid "Cleaning up..."
+msgstr "Καθαρισμός..."
+
+msgid "An error occurred during cleanup."
+msgstr "Παρουσιάστηκε σφάλμα κατά τον καθαρισμό."
+
+msgid "Successfully cleaned up %d old records."
+msgstr "Καθαρίστηκαν επιτυχώς %d παλιές εγγραφές."
+
+msgid "E-Learning System Overview"
+msgstr "Επισκόπηση Συστήματος Ηλεκτρονικής Μάθησης"
+
+msgid "Pass Rate"
+msgstr "Ποσοστό Επιτυχίας"
+
+msgid "Avg Score"
+msgstr "Μέσ. Βαθμολογία"
+
+msgid "View Full Analytics"
+msgstr "Προβολή Πλήρων Αναλυτικών Στοιχείων"
+
+msgid "EN / GR"
+msgstr "ΑΓΓ / ΕΛ"
+
+msgid "Completion Rate:"
+msgstr "Ποσοστό Ολοκλήρωσης:"
+
+msgid "Pass Rate:"
+msgstr "Ποσοστό Επιτυχίας:"
+
+msgid "Highest Score:"
+msgstr "Υψηλότερη Βαθμολογία:"
+
+msgid "Lowest Score:"
+msgstr "Χαμηλότερη Βαθμολογία:"
+
+msgid "No statistics available for this quiz yet."
+msgstr "Δεν υπάρχουν ακόμη διαθέσιμα στατιστικά για αυτό το κουίζ."
+
+msgid "No attempts yet."
+msgstr "Δεν υπάρχουν ακόμη προσπάθειες."
+
+msgid "pass rate"
+msgstr "ποσοστό επιτυχίας"
+
+msgid "avg score"
+msgstr "μέσ. βαθμολογία"
+
+msgid "You do not have permission to export data"
+msgstr "Δεν έχετε άδεια να εξάγετε δεδομένα"
+
+msgid "No data found for this quiz"
+msgstr "Δεν βρέθηκαν δεδομένα για αυτό το κουίζ"
+
+msgid "You do not have permission to cleanup data"
+msgstr "Δεν έχετε άδεια να καθαρίσετε δεδομένα"
+
+msgid "Access denied"
+msgstr "Απαγορεύεται η πρόσβαση"
+
+msgid "Invalid chart type"
+msgstr "Μη έγκυρος τύπος γραφήματος"
+
+msgid "You do not have permission to import questions"
+msgstr "Δεν έχετε άδεια να εισάγετε ερωτήσεις"
+
+msgid "No file uploaded"
+msgstr "Δεν ανέβηκε αρχείο"
+
+msgid "Please upload a CSV file"
+msgstr "Παρακαλώ ανεβάστε ένα αρχείο CSV"
+
+msgid "No valid questions found in the file"
+msgstr "Δεν βρέθηκαν έγκυρες ερωτήσεις στο αρχείο"
+
+msgid "Successfully imported %d questions"
+msgstr "Εισήχθησαν επιτυχώς %d ερωτήσεις"
+
+msgid "You do not have permission to export questions"
+msgstr "Δεν έχετε άδεια να εξάγετε ερωτήσεις"
+
+msgid "No questions found in this quiz"
+msgstr "Δεν βρέθηκαν ερωτήσεις σε αυτό το κουίζ"
+
+msgid "Import Quiz Questions"
+msgstr "Εισαγωγή Ερωτήσεων Κουίζ"
+
+msgid "Select CSV File:"
+msgstr "Επιλέξτε Αρχείο CSV:"
+
+msgid "Import Mode:"
+msgstr "Τρόπος Εισαγωγής:"
+
+msgid "Append to existing questions"
+msgstr "Προσθήκη στις υπάρχουσες ερωτήσεις"
+
+msgid "Replace existing questions"
+msgstr "Αντικατάσταση υπαρχουσών ερωτήσεων"
+
+msgid "Importing..."
+msgstr "Εισαγωγή..."
+
+msgid "Import failed. Please try again."
+msgstr "Η εισαγωγή απέτυχε. Παρακαλώ δοκιμάστε ξανά."
+
+msgid "Export Quiz Data"
+msgstr "Εξαγωγή Δεδομένων Κουίζ"
+
+msgid "Export quiz attempts and results to CSV format for analysis."
+msgstr "Εξαγωγή προσπαθειών και αποτελεσμάτων κουίζ σε μορφή CSV για ανάλυση."
+
+msgid "Select a quiz..."
+msgstr "Επιλέξτε ένα κουίζ..."
+
+msgid "Export Quiz Attempts"
+msgstr "Εξαγωγή Προσπαθειών Κουίζ"
+
+msgid "Export Quiz Questions"
+msgstr "Εξαγωγή Ερωτήσεων Κουίζ"
+
+msgid "Export to CSV"
+msgstr "Εξαγωγή σε CSV"
+
+msgid "Import Quiz Questions"
+msgstr "Εισαγωγή Ερωτήσεων Κουίζ"
+
+msgid "Import quiz questions from CSV format."
+msgstr "Εισαγωγή ερωτήσεων κουίζ από μορφή CSV."
+
+msgid "CSV Format Requirements:"
+msgstr "Απαιτήσεις Μορφής CSV:"
+
+msgid "Column headers (required): Type, Question"
+msgstr "Επικεφαλίδες στηλών (υποχρεωτικές): Type, Question"
+
+msgid "Multiple Choice: Option 1-5, Correct Answer(s)"
+msgstr "Πολλαπλής Επιλογής: Option 1-5, Correct Answer(s)"
+
+msgid "True/False: Correct Answer (true/false)"
+msgstr "Σωστό/Λάθος: Correct Answer (true/false)"
+
+msgid "Fill in Blanks: Text with Blanks (use {{blank}}), Word Bank"
+msgstr "Συμπλήρωση Κενών: Text with Blanks (χρήση {{blank}}), Word Bank"
+
+msgid "Matching: Left 1-5, Right 1-5, Matches (format: 1-2,2-1)"
+msgstr "Αντιστοίχιση: Left 1-5, Right 1-5, Matches (μορφή: 1-2,2-1)"
+
+msgid "Download Sample CSV"
+msgstr "Λήψη Δείγματος CSV"
+
+msgid "To import questions, edit a quiz and use the Import Questions button."
+msgstr "Για εισαγωγή ερωτήσεων, επεξεργαστείτε ένα κουίζ και χρησιμοποιήστε το κουμπί Εισαγωγής Ερωτήσεων."
+
+msgid "Go to Quizzes"
+msgstr "Μετάβαση στα Κουίζ"
+
+msgid "Bulk Operations"
+msgstr "Μαζικές Λειτουργίες"
+
+msgid "Export All Data"
+msgstr "Εξαγωγή Όλων των Δεδομένων"
+
+msgid "Export all quiz attempts from all quizzes."
+msgstr "Εξαγωγή όλων των προσπαθειών κουίζ από όλα τα κουίζ."
+
+msgid "Export All Attempts"
+msgstr "Εξαγωγή Όλων των Προσπαθειών"
+
+msgid "Data Cleanup"
+msgstr "Καθαρισμός Δεδομένων"
+
+msgid "Remove abandoned quiz attempts older than 7 days."
+msgstr "Αφαίρεση εγκαταλελειμμένων προσπαθειών κουίζ παλαιότερων των 7 ημερών."
+
+msgid "Cleanup Abandoned Attempts"
+msgstr "Καθαρισμός Εγκαταλελειμμένων Προσπαθειών"
+
+msgid "Please select a quiz to export."
+msgstr "Παρακαλώ επιλέξτε ένα κουίζ για εξαγωγή."
+
+msgid "This will export all quiz attempts. Continue?"
+msgstr "Αυτό θα εξάγει όλες τις προσπάθειες κουίζ. Συνέχεια;"
+
+msgid "This will remove all abandoned attempts older than 7 days. Continue?"
+msgstr "Αυτό θα αφαιρέσει όλες τις εγκαταλελειμμένες προσπάθειες παλαιότερες των 7 ημερών. Συνέχεια;"
+
+msgid "Cleanup failed"
+msgstr "Ο καθαρισμός απέτυχε"
+
+msgid "Number of lessons to show:"
+msgstr "Αριθμός μαθημάτων προς εμφάνιση:"
+
+msgid "All Categories"
+msgstr "Όλες οι Κατηγορίες"
+
+msgid "Category:"
+msgstr "Κατηγορία:"
+
+msgid "Show progress bar"
+msgstr "Εμφάνιση μπάρας προόδου"
+
+msgid "Show thumbnail"
+msgstr "Εμφάνιση μικρογραφίας"
+
+msgid "Number of quizzes to show:"
+msgstr "Αριθμός κουίζ προς εμφάνιση:"
+
+msgid "Show quiz statistics"
+msgstr "Εμφάνιση στατιστικών κουίζ"
+
+msgid "Quiz Categories"
+msgstr "Κατηγορίες Κουίζ"
+
+msgid "Quiz Category"
+msgstr "Κατηγορία Κουίζ"
+
+msgid "Categories"
+msgstr "Κατηγορίες"
+
+msgid "Edit Category"
+msgstr "Επεξεργασία Κατηγορίας"
+
+msgid "View Category"
+msgstr "Προβολή Κατηγορίας"
+
+msgid "Update Category"
+msgstr "Ενημέρωση Κατηγορίας"
+
+msgid "Add New Category"
+msgstr "Προσθήκη Νέας Κατηγορίας"
+
+msgid "New Category Name"
+msgstr "Όνομα Νέας Κατηγορίας"
+
+msgid "Search Categories"
+msgstr "Αναζήτηση Κατηγοριών"
+
+msgid "Lesson Categories"
+msgstr "Κατηγορίες Μαθημάτων"
+
+msgid "Lesson Category"
+msgstr "Κατηγορία Μαθήματος"
+
+msgid "Select a quiz"
+msgstr "Επιλέξτε ένα κουίζ"
+
+msgid "English Attempts"
+msgstr "Αγγλικές Προσπάθειες"
+
+msgid "Greek Attempts"
+msgstr "Ελληνικές Προσπάθειες"
+
+msgid "Export Data"
+msgstr "Εξαγωγή Δεδομένων"
+
+msgid "Export Quiz Data to CSV"
+msgstr "Εξαγωγή Δεδομένων Κουίζ σε CSV"
+
+msgid "You have unanswered questions"
+msgstr "Έχετε αναπάντητες ερωτήσεις"
+
+msgid "Submit anyway?"
+msgstr "Υποβολή ούτως ή άλλως;"
+
+msgid "Time Taken"
+msgstr "Χρόνος που Χρειάστηκε"
+
+msgid "Question not found"
+msgstr "Η ερώτηση δεν βρέθηκε"
+
+msgid "Unknown Question Type"
+msgstr "Άγνωστος Τύπος Ερώτησης"
+
+msgid "Question %s"
+msgstr "Ερώτηση %s"
+
+msgid "Section %d - Question %d"
+msgstr "Ενότητα %d - Ερώτηση %d"
+
+msgid "You must complete %s before taking this quiz."
+msgstr "Πρέπει να ολοκληρώσετε το %s πριν κάνετε αυτό το κουίζ."
+
+msgid "Your progress:"
+msgstr "Η πρόοδός σας:"
+
+msgid "%d%% completed"
+msgstr "%d%% ολοκληρωμένο"
+
+msgid "Time taken:"
+msgstr "Χρόνος που χρειάστηκε:"
+
+msgid "Difficult questions:"
+msgstr "Δύσκολες ερωτήσεις:"
+
+msgid "% success rate"
+msgstr "% ποσοστό επιτυχίας"
