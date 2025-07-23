@@ -1,0 +1,1148 @@
+# E-Learning Quiz System POT Template
+# Copyright (C) 2024
+# This file is distributed under the same license as the E-Learning Quiz System package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Learning Quiz System 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+# Common Actions
+msgid "Start Quiz"
+msgstr ""
+
+msgid "Retake Quiz"
+msgstr ""
+
+msgid "Retry Quiz"
+msgstr ""
+
+msgid "Submit Quiz"
+msgstr ""
+
+msgid "Take Quiz"
+msgstr ""
+
+msgid "View Quiz"
+msgstr ""
+
+msgid "Preview Quiz"
+msgstr ""
+
+# Lesson Actions
+msgid "Start Lesson"
+msgstr ""
+
+msgid "Review Lesson"
+msgstr ""
+
+msgid "View Lesson"
+msgstr ""
+
+msgid "Go to Lesson"
+msgstr ""
+
+msgid "Preview Lesson"
+msgstr ""
+
+# Common UI Elements
+msgid "Loading..."
+msgstr ""
+
+msgid "An error occurred. Please try again."
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+# Quiz Specific
+msgid "Questions"
+msgstr ""
+
+msgid "Question"
+msgstr ""
+
+msgid "Passing Score"
+msgstr ""
+
+msgid "Time Limit"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Congratulations!"
+msgstr ""
+
+msgid "You have successfully passed this quiz."
+msgstr ""
+
+msgid "You did not pass this quiz. Please review the material and try again."
+msgstr ""
+
+msgid "Try Again"
+msgstr ""
+
+msgid "Correct Answers"
+msgstr ""
+
+msgid "Your Answer"
+msgstr ""
+
+msgid "Correct Answer"
+msgstr ""
+
+msgid "Score"
+msgstr ""
+
+msgid "Attempts"
+msgstr ""
+
+msgid "Best Score"
+msgstr ""
+
+# Lesson Specific
+msgid "Sections"
+msgstr ""
+
+msgid "Section"
+msgstr ""
+
+msgid "Mark as Complete"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "In Progress"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "Complete the previous section to unlock this content."
+msgstr ""
+
+# Status Messages
+msgid "This quiz has no questions yet."
+msgstr ""
+
+msgid "This lesson has no sections yet."
+msgstr ""
+
+msgid "No lessons found."
+msgstr ""
+
+msgid "No quizzes found."
+msgstr ""
+
+msgid "Quiz Locked"
+msgstr ""
+
+msgid "You must finish %s in order to take this quiz."
+msgstr ""
+
+# Progress
+msgid "Your Progress"
+msgstr ""
+
+msgid "%d%% complete"
+msgstr ""
+
+msgid "%d of %d sections completed"
+msgstr ""
+
+# Question Types
+msgid "Multiple Choice"
+msgstr ""
+
+msgid "True/False"
+msgstr ""
+
+msgid "Fill in the Blanks"
+msgstr ""
+
+msgid "Matching"
+msgstr ""
+
+# Question Instructions
+msgid "Select the correct answer:"
+msgstr ""
+
+msgid "Select all correct answers:"
+msgstr ""
+
+msgid "Select True or False:"
+msgstr ""
+
+msgid "Drag words to fill the blanks:"
+msgstr ""
+
+msgid "Drag items from the right column to match with items in the left column:"
+msgstr ""
+
+# Admin
+msgid "Add"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Analytics"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+# Post Type Labels
+msgid "Lessons"
+msgstr ""
+
+msgid "Lesson"
+msgstr ""
+
+msgid "Add New Lesson"
+msgstr ""
+
+msgid "Edit Lesson"
+msgstr ""
+
+msgid "New Lesson"
+msgstr ""
+
+msgid "All Lessons"
+msgstr ""
+
+msgid "Search Lessons"
+msgstr ""
+
+msgid "No lessons found"
+msgstr ""
+
+msgid "Quizzes"
+msgstr ""
+
+msgid "Quiz"
+msgstr ""
+
+msgid "Add New Quiz"
+msgstr ""
+
+msgid "Edit Quiz"
+msgstr ""
+
+msgid "New Quiz"
+msgstr ""
+
+msgid "All Quizzes"
+msgstr ""
+
+msgid "Search Quizzes"
+msgstr ""
+
+msgid "No quizzes found"
+msgstr ""
+
+# Time
+msgid "minutes"
+msgstr ""
+
+msgid "seconds"
+msgstr ""
+
+msgid "Time Remaining"
+msgstr ""
+
+msgid "Time's Up!"
+msgstr ""
+
+# Loan Calculator
+msgid "Loan Calculator"
+msgstr ""
+
+msgid "Loan Amount"
+msgstr ""
+
+msgid "Annual Interest Rate"
+msgstr ""
+
+msgid "Loan Term"
+msgstr ""
+
+msgid "years"
+msgstr ""
+
+msgid "Calculate"
+msgstr ""
+
+msgid "Monthly Payment"
+msgstr ""
+
+msgid "Total Payment"
+msgstr ""
+
+msgid "Total Interest"
+msgstr ""
+
+# Validation Messages
+msgid "This field is required"
+msgstr ""
+
+msgid "Please enter a valid value"
+msgstr ""
+
+msgid "Are you sure you want to delete this item?"
+msgstr ""
+
+# True/False
+msgid "True"
+msgstr ""
+
+msgid "False"
+msgstr ""
+
+# Additional Phrases
+msgid "Questions:"
+msgstr ""
+
+msgid "Passing Score:"
+msgstr ""
+
+msgid "Time Limit:"
+msgstr ""
+
+msgid "No time limit"
+msgstr ""
+
+msgid "%d questions"
+msgstr ""
+
+msgid "%d sections"
+msgstr ""
+
+msgid "%d%% to pass"
+msgstr ""
+
+msgid "%d min"
+msgstr ""
+
+msgid "Best: %d%%"
+msgstr ""
+
+msgid "%d attempts"
+msgstr ""
+
+msgid "Complete %s first"
+msgstr ""
+
+msgid "You have already passed this quiz."
+msgstr ""
+
+msgid "Your best score: %.1f%%"
+msgstr ""
+
+msgid "Total attempts: %d"
+msgstr ""
+
+msgid "E-Learning System"
+msgstr ""
+
+msgid "E-Learning"
+msgstr ""
+
+msgid "Ready for the Quiz?"
+msgstr ""
+
+msgid "You have completed all sections. Test your knowledge with the quiz!"
+msgstr ""
+
+msgid "Question %d"
+msgstr ""
+
+msgid "Question %d of %d"
+msgstr ""
+
+msgid "Processing your answers..."
+msgstr ""
+
+msgid "Submit Quiz?"
+msgstr ""
+
+msgid "Are you sure you want to submit your answers? You cannot change them after submission."
+msgstr ""
+
+msgid "Drop here"
+msgstr ""
+
+msgid "Word Bank:"
+msgstr ""
+
+msgid "Match These:"
+msgstr ""
+
+msgid "Available Options:"
+msgstr ""
+
+msgid "Option text"
+msgstr ""
+
+msgid "Correct"
+msgstr ""
+
+msgid "Word"
+msgstr ""
+
+msgid "Left item"
+msgstr ""
+
+msgid "Right item"
+msgstr ""
+
+msgid "matches with"
+msgstr ""
+
+msgid "Select left item"
+msgstr ""
+
+msgid "Select right item"
+msgstr ""
+
+msgid "Left Column"
+msgstr ""
+
+msgid "Right Column"
+msgstr ""
+
+msgid "Correct Matches"
+msgstr ""
+
+msgid "Add Left Item"
+msgstr ""
+
+msgid "Add Right Item"
+msgstr ""
+
+msgid "Add Match"
+msgstr ""
+
+msgid "Add Option"
+msgstr ""
+
+msgid "Add Word"
+msgstr ""
+
+msgid "Add Section"
+msgstr ""
+
+msgid "Add Question"
+msgstr ""
+
+msgid "Text with Blanks"
+msgstr ""
+
+msgid "Use {{blank}} to mark where blanks should appear."
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Question Type"
+msgstr ""
+
+msgid "Associated Quiz"
+msgstr ""
+
+msgid "Associated Lesson"
+msgstr ""
+
+msgid "Select Quiz"
+msgstr ""
+
+msgid "Select Lesson"
+msgstr ""
+
+msgid "No Quiz"
+msgstr ""
+
+msgid "No Lesson"
+msgstr ""
+
+msgid "Lesson Sections"
+msgstr ""
+
+msgid "Quiz Questions"
+msgstr ""
+
+msgid "Quiz Settings"
+msgstr ""
+
+msgid "Section Title"
+msgstr ""
+
+msgid "Section Content"
+msgstr ""
+
+msgid "Section %s"
+msgstr ""
+
+msgid "Import Questions"
+msgstr ""
+
+msgid "Export Questions"
+msgstr ""
+
+msgid "Import/Export"
+msgstr ""
+
+msgid "Latest Lessons"
+msgstr ""
+
+msgid "Latest Quizzes"
+msgstr ""
+
+msgid "Passed"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "Please specify a lesson ID."
+msgstr ""
+
+msgid "Lesson not found."
+msgstr ""
+
+msgid "Please specify a quiz ID."
+msgstr ""
+
+msgid "Quiz not found."
+msgstr ""
+
+msgid "Quiz Statistics"
+msgstr ""
+
+msgid "Total Attempts"
+msgstr ""
+
+msgid "Average Score"
+msgstr ""
+
+msgid "Recent Quiz Attempts"
+msgstr ""
+
+msgid "Lesson Progress"
+msgstr ""
+
+msgid "No quiz attempts yet."
+msgstr ""
+
+msgid "No lessons started yet."
+msgstr ""
+
+msgid "Security check failed"
+msgstr ""
+
+msgid "Invalid quiz ID"
+msgstr ""
+
+msgid "Quiz not found or not available"
+msgstr ""
+
+msgid "This quiz has no questions"
+msgstr ""
+
+msgid "Failed to start quiz attempt. Please try again."
+msgstr ""
+
+msgid "Quiz started successfully"
+msgstr ""
+
+msgid "Invalid attempt ID"
+msgstr ""
+
+msgid "Quiz attempt not found"
+msgstr ""
+
+msgid "This quiz has already been submitted"
+msgstr ""
+
+msgid "Quiz time limit exceeded"
+msgstr ""
+
+msgid "No answers provided"
+msgstr ""
+
+msgid "Failed to save quiz results"
+msgstr ""
+
+msgid "Progress saved"
+msgstr ""
+
+msgid "Invalid lesson ID"
+msgstr ""
+
+msgid "Section not found"
+msgstr ""
+
+msgid "Progress updated"
+msgstr ""
+
+msgid "Failed to update progress"
+msgstr ""
+
+msgid "E-Learning System Dashboard"
+msgstr ""
+
+msgid "Total Quiz Attempts"
+msgstr ""
+
+msgid "Completed Quizzes"
+msgstr ""
+
+msgid "Passed Quizzes"
+msgstr ""
+
+msgid "Unique Users"
+msgstr ""
+
+msgid "Usage by Language"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Global Average Score"
+msgstr ""
+
+msgid "Quick Actions"
+msgstr ""
+
+msgid "Create New Lesson"
+msgstr ""
+
+msgid "Create New Quiz"
+msgstr ""
+
+msgid "View Analytics"
+msgstr ""
+
+msgid "General Settings"
+msgstr ""
+
+msgid "Data Retention (Days)"
+msgstr ""
+
+msgid "Default Passing Score (%)"
+msgstr ""
+
+msgid "Default Questions Per Quiz"
+msgstr ""
+
+msgid "Show Correct Answers"
+msgstr ""
+
+msgid "Showing %d-%d of %d results"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Select Language"
+msgstr ""
+
+msgid "You must complete the lesson before taking this quiz."
+msgstr ""
+
+msgid "Marking Complete..."
+msgstr ""
+
+msgid "Error updating progress"
+msgstr ""
+
+msgid "Rich editor will be initialized when section is added."
+msgstr ""
+
+msgid "Yes - Show correct answers after submission"
+msgstr ""
+
+msgid "No - Only show score"
+msgstr ""
+
+msgid "Randomize Questions"
+msgstr ""
+
+msgid "Randomize Answers"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Show questions in random order for each attempt."
+msgstr ""
+
+msgid "Show answer options in random order (for multiple choice questions)."
+msgstr ""
+
+msgid "Questions to Show"
+msgstr ""
+
+msgid "Number of questions to show from the question bank. Leave empty to show all."
+msgstr ""
+
+msgid "Time Limit (minutes)"
+msgstr ""
+
+msgid "Time limit in minutes. Set to 0 for no time limit."
+msgstr ""
+
+msgid "Minimum percentage required to pass the quiz."
+msgstr ""
+
+msgid "Select a quiz to associate with this lesson. Students will take this quiz after completing the lesson."
+msgstr ""
+
+msgid "Select a lesson this quiz belongs to. This creates a two-way association."
+msgstr ""
+
+msgid "Too many attempts. Please wait a minute before trying again."
+msgstr ""
+
+msgid "No valid questions found in this quiz"
+msgstr ""
+
+msgid "One minute remaining"
+msgstr ""
+
+msgid "Your quiz is being submitted..."
+msgstr ""
+
+msgid "You have unsaved progress. Are you sure you want to leave?"
+msgstr ""
+
+msgid "Skip to quiz content"
+msgstr ""
+
+msgid "No answer provided"
+msgstr ""
+
+msgid "Review Your Answers"
+msgstr ""
+
+msgid "Most Challenging Questions"
+msgstr ""
+
+msgid "Calculating..."
+msgstr ""
+
+msgid "Calculation Results"
+msgstr ""
+
+msgid "Show Payment Breakdown"
+msgstr ""
+
+msgid "Hide Payment Breakdown"
+msgstr ""
+
+msgid "Principal"
+msgstr ""
+
+msgid "Interest"
+msgstr ""
+
+msgid "Please enter valid numbers"
+msgstr ""
+
+msgid "Please enter positive values"
+msgstr ""
+
+msgid "Calculation error occurred"
+msgstr ""
+
+msgid "Content Editor"
+msgstr ""
+
+msgid "You do not have permission to perform this action"
+msgstr ""
+
+msgid "Invalid editor ID"
+msgstr ""
+
+msgid "E-Learning Settings"
+msgstr ""
+
+msgid "Configure general settings for the e-learning system."
+msgstr ""
+
+msgid "Number of days to keep quiz and lesson data. Set to 0 to keep data indefinitely."
+msgstr ""
+
+msgid "Default passing score percentage for new quizzes."
+msgstr ""
+
+msgid "Default number of questions to show per quiz."
+msgstr ""
+
+msgid "Show correct answers after quiz completion"
+msgstr ""
+
+msgid "Data Management"
+msgstr ""
+
+msgid "Clean up old quiz and lesson data based on your retention settings."
+msgstr ""
+
+msgid "Cleanup Old Data Now"
+msgstr ""
+
+msgid "Are you sure you want to cleanup old data? This action cannot be undone."
+msgstr ""
+
+msgid "Cleaning up..."
+msgstr ""
+
+msgid "An error occurred during cleanup."
+msgstr ""
+
+msgid "Successfully cleaned up %d old records."
+msgstr ""
+
+msgid "E-Learning System Overview"
+msgstr ""
+
+msgid "Pass Rate"
+msgstr ""
+
+msgid "Avg Score"
+msgstr ""
+
+msgid "View Full Analytics"
+msgstr ""
+
+msgid "EN / GR"
+msgstr ""
+
+msgid "Completion Rate:"
+msgstr ""
+
+msgid "Pass Rate:"
+msgstr ""
+
+msgid "Highest Score:"
+msgstr ""
+
+msgid "Lowest Score:"
+msgstr ""
+
+msgid "No statistics available for this quiz yet."
+msgstr ""
+
+msgid "No attempts yet."
+msgstr ""
+
+msgid "pass rate"
+msgstr ""
+
+msgid "avg score"
+msgstr ""
+
+msgid "You do not have permission to export data"
+msgstr ""
+
+msgid "No data found for this quiz"
+msgstr ""
+
+msgid "You do not have permission to cleanup data"
+msgstr ""
+
+msgid "Access denied"
+msgstr ""
+
+msgid "Invalid chart type"
+msgstr ""
+
+msgid "You do not have permission to import questions"
+msgstr ""
+
+msgid "No file uploaded"
+msgstr ""
+
+msgid "Please upload a CSV file"
+msgstr ""
+
+msgid "No valid questions found in the file"
+msgstr ""
+
+msgid "Successfully imported %d questions"
+msgstr ""
+
+msgid "You do not have permission to export questions"
+msgstr ""
+
+msgid "No questions found in this quiz"
+msgstr ""
+
+msgid "Import Quiz Questions"
+msgstr ""
+
+msgid "Select CSV File:"
+msgstr ""
+
+msgid "Import Mode:"
+msgstr ""
+
+msgid "Append to existing questions"
+msgstr ""
+
+msgid "Replace existing questions"
+msgstr ""
+
+msgid "Importing..."
+msgstr ""
+
+msgid "Import failed. Please try again."
+msgstr ""
+
+msgid "Export Quiz Data"
+msgstr ""
+
+msgid "Export quiz attempts and results to CSV format for analysis."
+msgstr ""
+
+msgid "Select a quiz..."
+msgstr ""
+
+msgid "Export Quiz Attempts"
+msgstr ""
+
+msgid "Export Quiz Questions"
+msgstr ""
+
+msgid "Export to CSV"
+msgstr ""
+
+msgid "Import Quiz Questions"
+msgstr ""
+
+msgid "Import quiz questions from CSV format."
+msgstr ""
+
+msgid "CSV Format Requirements:"
+msgstr ""
+
+msgid "Column headers (required): Type, Question"
+msgstr ""
+
+msgid "Multiple Choice: Option 1-5, Correct Answer(s)"
+msgstr ""
+
+msgid "True/False: Correct Answer (true/false)"
+msgstr ""
+
+msgid "Fill in Blanks: Text with Blanks (use {{blank}}), Word Bank"
+msgstr ""
+
+msgid "Matching: Left 1-5, Right 1-5, Matches (format: 1-2,2-1)"
+msgstr ""
+
+msgid "Download Sample CSV"
+msgstr ""
+
+msgid "To import questions, edit a quiz and use the Import Questions button."
+msgstr ""
+
+msgid "Go to Quizzes"
+msgstr ""
+
+msgid "Bulk Operations"
+msgstr ""
+
+msgid "Export All Data"
+msgstr ""
+
+msgid "Export all quiz attempts from all quizzes."
+msgstr ""
+
+msgid "Export All Attempts"
+msgstr ""
+
+msgid "Data Cleanup"
+msgstr ""
+
+msgid "Remove abandoned quiz attempts older than 7 days."
+msgstr ""
+
+msgid "Cleanup Abandoned Attempts"
+msgstr ""
+
+msgid "Please select a quiz to export."
+msgstr ""
+
+msgid "This will export all quiz attempts. Continue?"
+msgstr ""
+
+msgid "This will remove all abandoned attempts older than 7 days. Continue?"
+msgstr ""
+
+msgid "Cleanup failed"
+msgstr ""
+
+msgid "Number of lessons to show:"
+msgstr ""
+
+msgid "All Categories"
+msgstr ""
+
+msgid "Category:"
+msgstr ""
+
+msgid "Show progress bar"
+msgstr ""
+
+msgid "Show thumbnail"
+msgstr ""
+
+msgid "Number of quizzes to show:"
+msgstr ""
+
+msgid "Show quiz statistics"
+msgstr ""
+
+msgid "Quiz Categories"
+msgstr ""
+
+msgid "Quiz Category"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Edit Category"
+msgstr ""
+
+msgid "View Category"
+msgstr ""
+
+msgid "Update Category"
+msgstr ""
+
+msgid "Add New Category"
+msgstr ""
+
+msgid "New Category Name"
+msgstr ""
+
+msgid "Search Categories"
+msgstr ""
+
+msgid "Lesson Categories"
+msgstr ""
+
+msgid "Lesson Category"
+msgstr ""
+
+msgid "Select a quiz"
+msgstr ""
+
+msgid "English Attempts"
+msgstr ""
+
+msgid "Greek Attempts"
+msgstr ""
+
+msgid "Export Data"
+msgstr ""
+
+msgid "Export Quiz Data to CSV"
+msgstr ""
+
+msgid "You have unanswered questions"
+msgstr ""
+
+msgid "Submit anyway?"
+msgstr ""
+
+msgid "Time Taken"
+msgstr ""
+
+msgid "Question not found"
+msgstr ""
+
+msgid "Unknown Question Type"
+msgstr ""
+
+msgid "Question %s"
+msgstr ""
+
+msgid "Section %d - Question %d"
+msgstr ""
+
+msgid "You must complete %s before taking this quiz."
+msgstr ""
+
+msgid "Your progress:"
+msgstr ""
+
+msgid "%d%% completed"
+msgstr ""
+
+msgid "Time taken:"
+msgstr ""
+
+msgid "Difficult questions:"
+msgstr ""
+
+msgid "% success rate"
+msgstr ""

@@ -1,0 +1,266 @@
+/* E-Learning Quiz System - Admin Styles */
+/* Enhanced admin styles for meta boxes with proper button functionality */
+
+.lesson-section,
+.quiz-question {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.section-header,
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.remove-section,
+.remove-question {
+    color: #d63638;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.remove-section:hover,
+.remove-question:hover {
+    color: #d63638;
+}
+
+.option-row,
+.word-row,
+.match-item,
+.match-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.option-row input[type="text"],
+.word-row input[type="text"],
+.match-item input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+.matching-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.left-column,
+.right-column {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.left-column h5,
+.right-column h5 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.match-items-container {
+    margin-bottom: 15px;
+}
+
+.matches-container {
+    margin-bottom: 15px;
+}
+
+.matches-container .match-row {
+    background: #f0f8ff;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    align-items: center;
+}
+
+.match-row select {
+    min-width: 150px;
+    padding: 4px 8px;
+}
+
+.match-row span {
+    font-weight: 600;
+    color: #666;
+    margin: 0 10px;
+}
+
+/* Button Styles - CRITICAL FOR FUNCTIONALITY */
+.button,
+.add-option,
+.add-word,
+.add-left-item,
+.add-right-item,
+.add-match {
+    display: inline-block !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1 !important;
+    background: #0073aa !important;
+    color: white !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    border-radius: 3px !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    margin: 5px 2px !important;
+    min-height: 30px !important;
+    line-height: 1.4 !important;
+}
+
+.button:hover,
+.add-option:hover,
+.add-word:hover,
+.add-left-item:hover,
+.add-right-item:hover,
+.add-match:hover {
+    background: #005a87 !important;
+    color: white !important;
+}
+
+.button:active,
+.add-option:active,
+.add-word:active,
+.add-left-item:active,
+.add-right-item:active,
+.add-match:active {
+    background: #004570 !important;
+    transform: translateY(1px) !important;
+}
+
+/* Remove button styles */
+.button-link-delete,
+.remove-option,
+.remove-word,
+.remove-left-item,
+.remove-right-item,
+.remove-match {
+    display: inline-block !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    color: #d63638 !important;
+    text-decoration: none !important;
+    padding: 4px 8px !important;
+    border-radius: 3px !important;
+    font-size: 12px !important;
+    background: transparent !important;
+    border: 1px solid #d63638 !important;
+    margin-left: 5px !important;
+}
+
+.button-link-delete:hover,
+.remove-option:hover,
+.remove-word:hover,
+.remove-left-item:hover,
+.remove-right-item:hover,
+.remove-match:hover {
+    background: #d63638 !important;
+    color: white !important;
+}
+
+/* Question type specific styles */
+.word-bank-container,
+.options-container {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.question-options {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.question-options h5 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.question-options .description {
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Form table styles */
+.form-table th {
+    width: 150px;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+.form-table td {
+    vertical-align: top;
+}
+
+/* WordPress editor integration */
+.wp-editor-container {
+    margin-top: 10px;
+}
+
+/* Ensure no conflicting styles */
+.quiz-question *,
+.lesson-section * {
+    box-sizing: border-box;
+}
+
+/* Mobile responsive */
+@media (max-width: 782px) {
+    .matching-columns {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .option-row,
+    .word-row,
+    .match-item,
+    .match-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .match-row {
+        text-align: center;
+    }
+    
+    .match-row span {
+        margin: 5px 0;
+    }
+}
+
+/* Accessibility */
+.button:focus,
+.add-option:focus,
+.add-word:focus,
+.add-left-item:focus,
+.add-right-item:focus,
+.add-match:focus {
+    outline: 2px solid #005a87 !important;
+    outline-offset: 2px !important;
+}

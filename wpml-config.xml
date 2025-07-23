@@ -1,0 +1,66 @@
+<wpml-config>
+    <custom-types>
+        <custom-type translate="1">elearning_lesson</custom-type>
+        <custom-type translate="1">elearning_quiz</custom-type>
+    </custom-types>
+    
+    <taxonomies>
+        <taxonomy translate="1">lesson_category</taxonomy>
+        <taxonomy translate="1">quiz_category</taxonomy>
+    </taxonomies>
+    
+    <custom-fields>
+        <custom-field action="copy">_lesson_sections</custom-field>
+        <custom-field action="copy">_quiz_questions</custom-field>
+        <custom-field action="copy">_passing_score</custom-field>
+        <custom-field action="copy">_min_questions_to_show</custom-field>
+        <custom-field action="copy">_show_results_immediately</custom-field>
+        <custom-field action="copy">_time_limit</custom-field>
+        <custom-field action="copy">_randomize_questions</custom-field>
+        <custom-field action="copy">_randomize_answers</custom-field>
+        <custom-field action="translate">_associated_quiz</custom-field>
+        <custom-field action="translate">_associated_lesson</custom-field>
+    </custom-fields>
+    
+    <shortcodes>
+        <shortcode>
+            <tag>loan_calculator</tag>
+            <attributes>
+                <attribute>title</attribute>
+                <attribute>currency</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>display_lesson</tag>
+            <attributes>
+                <attribute>id</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>display_quiz</tag>
+            <attributes>
+                <attribute>id</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>lesson_feed</tag>
+            <attributes>
+                <attribute>category</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>quiz_feed</tag>
+            <attributes>
+                <attribute>category</attribute>
+            </attributes>
+        </shortcode>
+    </shortcodes>
+    
+    <admin-texts>
+        <key name="elearning_quiz_settings">
+            <key name="default_passing_score" />
+            <key name="questions_per_quiz" />
+            <key name="data_retention_days" />
+        </key>
+    </admin-texts>
+</wpml-config>
